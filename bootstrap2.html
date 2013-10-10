@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html>
 <head lang="en">
@@ -70,7 +68,7 @@
     <hr>
 
     <div class="row">
-    	<h2 id="migration-dropped">Example of a table and alert classes</h2>
+    	<h2 id="migration-dropped">Example of a table with colums and rows</h2>
 	    <p>The following elements are formated in a responsive table. The middle row has alert classes atteched to them.</p>
 	    <div class="table-responsive">
 	      <table class="table table-bordered table-striped">
@@ -89,17 +87,17 @@
 	          </tr>
 	          <tr>
 	            <td>dolor sit amet</td>
-	            <td class="alert-success">consectetur adipisicing elit -> alert-success</td>
-	            <td class="alert-error text-muted">N/A</td>
-	          </tr>
-	          <tr>
-	            <td>dolor sit amet</td>
-	            <td class="alert-error">consectetur adipisicing elit -> alert-error</td>
+	            <td>consectetur adipisicing elit</td>
 	            <td class="text-muted">N/A</td>
 	          </tr>
 	          <tr>
 	            <td>dolor sit amet</td>
-	            <td class="alert-info">consectetur adipisicing elit -> alert-info</td>
+	            <td>consectetur adipisicing elit</td>
+	            <td class="text-muted">N/A</td>
+	          </tr>
+	          <tr>
+	            <td>dolor sit amet</td>
+	            <td>consectetur adipisicing elit</td>
 	            <td class="text-muted">N/A</td>
 	          </tr>
 	        </tbody>
@@ -110,25 +108,22 @@
     <hr>
     
     <div class="row">
-    	<h2>Different types of label classes</h2>
-    	<p>In this section, I used labels and label classes</p>
-	  	<form class="form-inline">
-	  		<div class="form-group">
-	      	<label for="label_important" class="label-important">lorem ipsum</label>
-	      	<input type="text" placeholder="important" class="form-control" id="label_important">
-	    	</div>
-	    	<div class="form-group">
-	      	<label for="label_success" class="label-success">lorem ipsum</label>
-	      	<input type="text" placeholder="success" class="form-control" id="label_success">
-	    	</div>
-	    	<div class="form-group">
-	      	<label for="label_info" class="label-info">lorem ipsum</label>
-	      	<input type="text" placeholder="info" class="form-control" id="label_info">
-	  		</div>	
-	  	</form>
+    	<h2>Playing with labels <span class="label label-default">New</span></h2>
+    	<h3>In this section, I used labels and label classes <span class="label label-info">info</span></h3>
+    	<p>lorem ipsum dolor sit amet <span class="label label-success">success</span></p>
     </div>
 
     <hr>
+
+    <div class="row">
+    	<h2>Alert and alert classes</h2>
+		<form class="form-inline">
+	    	<div class="form-group alert alert-success">lorem ipsum dolor sit success</div>
+	    	<div class="form-group alert alert-info">lorem ipsum dolor sit info</div>
+	    	<div class="form-group alert alert-warning">lorem ipsum dolor sit warning</div>
+	    	<div class="form-group alert alert-danger">lorem ipsum dolor sit danger</div>
+    	</form>
+    </div>
 
     <footer>
       <p class="right">&copy; Thereza Scherrer Oct, 2013</p>
