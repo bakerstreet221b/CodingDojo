@@ -1,0 +1,22 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+.box {
+	width: 30px;
+	height: 30px;
+}
+#box1 {
+	background-color: #7C55D1;
+}
+#box2 {
+	background-color: #671C60;
+}
+#box3 {
+	background-color: #333782;
+}
+#box4 {
+	background-color: #0C1B70;
+}
+#box5 {
+	background-color: #BDB243;
+}
