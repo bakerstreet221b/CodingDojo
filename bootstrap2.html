@@ -1,37 +1,138 @@
- <!-- hero-unit, table, nav, navbar, row, span4, btn, btn-primary, btn-success, btn-danger, label, label-success, label-important, label-info, alert, alert-error, alert-success, alert-info, dropdown, dropdown-menu. -->
 
- <!doctype html>
+
+<!doctype html>
 <html>
-	<head lang="en">
-		<meta charset="utf-8"/>
-		<title>@Loup's</title>
-		<meta name="description" content="Loup's essay">
-		<link rel="stylesheet" type="text/css" href="bootstrap.css">
-	</head>
-	<body>
+<head lang="en">
+	<meta charset="utf-8"/>
+	<title>Hello, Worlds!</title>
+	<meta name="description" content="bootstrap exercice">
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
-			<div class="nav navbar">lorem ipsum</div>
-			<div class="row">
-				<div class="span4">
-					<p class="btn btn-primary btn-success">lorem ipsum</p>
-					<p class="btn btn-danger">lorem ipsum</p>
-				</div>
-				<div class="span4">
-					<p class="label label-success">lorem ipsum</p>
-					<p class="label label-important">lorem ipsum</p>
-					<p class="label label-info">lorem ipsum</p>
-				</div>
-
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Hello, Worlds!</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">lorem ipsum</a></li>
+							<li><a href="">dolor sit</a></li>
+							<li><a href="">amet</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">lorem</li>
+							<li><a href="">consectetur</a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<div class="form-group"><input type="text" placeholder="Username" class="form-control"></div>
+					<div class="form-group"><input type="text" placeholder="Password" class="form-control"></div>
+					<button type="submit" class="btn btn-success">Sign in</button>
+				</form>
 			</div>
 		</div>
-		<div class="container">
-			<div class="alert">lorem ipsum</div>
-			<div class="alert-error">lorem ipsum</div>
-			<div class="alert-success">lorem ipsum</div>
-			<div class="alert-info">lorem ipsum</div>
-			<div class="dropdown">lorem ipsum</div>
-			<div class="dropdown-menue">lorem ipsum</div>
-		</div>
-		<div></div>
-	</body>
+	</div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Hello, Worlds!</h1>
+      <p><span>Lorem ipsum dolor sit amet</span>, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+  </div>
+
+	<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Lorem ipsum</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-danger" href="#">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Lorem ipsum</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Lorem ipsum</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-default alert" href="#">View details &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+    	<h2 id="migration-dropped">Example of a table and alert classes</h2>
+	    <p>The following elements are formated in a responsive table. The middle row has alert classes atteched to them.</p>
+	    <div class="table-responsive">
+	      <table class="table table-bordered table-striped">
+	        <thead>
+	          <tr>
+	            <th>lorem ipsum</th>
+	            <th>lorem ipsum</th>
+	            <th>lorem ipsum</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	          <tr>
+	            <td>dolor sit amet</td>
+	            <td class="#">consectetur adipisicing elit</td>
+	            <td class="text-muted">N/A</td>
+	          </tr>
+	          <tr>
+	            <td>dolor sit amet</td>
+	            <td class="alert-success">consectetur adipisicing elit -> alert-success</td>
+	            <td class="alert-error text-muted">N/A</td>
+	          </tr>
+	          <tr>
+	            <td>dolor sit amet</td>
+	            <td class="alert-error">consectetur adipisicing elit -> alert-error</td>
+	            <td class="text-muted">N/A</td>
+	          </tr>
+	          <tr>
+	            <td>dolor sit amet</td>
+	            <td class="alert-info">consectetur adipisicing elit -> alert-info</td>
+	            <td class="text-muted">N/A</td>
+	          </tr>
+	        </tbody>
+	      </table>
+	    </div>
+    </div>
+
+    <hr>
+    
+    <div class="row">
+    	<h2>Different types of label classes</h2>
+    	<p>In this section, I used labels and label classes</p>
+	  	<form class="form-inline">
+	  		<div class="form-group">
+	      	<label for="label_important" class="label-important">lorem ipsum</label>
+	      	<input type="text" placeholder="important" class="form-control" id="label_important">
+	    	</div>
+	    	<div class="form-group">
+	      	<label for="label_success" class="label-success">lorem ipsum</label>
+	      	<input type="text" placeholder="success" class="form-control" id="label_success">
+	    	</div>
+	    	<div class="form-group">
+	      	<label for="label_info" class="label-info">lorem ipsum</label>
+	      	<input type="text" placeholder="info" class="form-control" id="label_info">
+	  		</div>	
+	  	</form>
+    </div>
+
+    <hr>
+
+    <footer>
+      <p class="right">&copy; Thereza Scherrer Oct, 2013</p>
+    </footer>
+  </div> 
+</body>
 </html>

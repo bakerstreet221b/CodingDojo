@@ -6822,3 +6822,6 @@ footer p.left {
 footer p.right {
   float: right;
 }
+.margin_top {
+  margin-top: 55px;
+}
