@@ -1,0 +1,176 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial;
+	color: #333333;
+}
+h2, h3 {
+	color: #4981AE;
+
+}
+h2 {
+	font-size: 120%;
+}
+h3 {
+	font-size: 100%;
+}
+p {
+	font-size: 80%;
+	padding-bottom: 5px;
+	line-height: 20px; 
+	
+}
+span {
+	font-weight: bold;
+}
+.container {
+	width: 960px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#header {
+	overflow: hidden;
+	color: #999999;
+	font-size: 70%;
+	vertical-align: top;
+}
+#header #submit {
+	float: right;
+	border: 0;
+}
+#header #submit li {
+	border: 0;
+}
+#header img {
+	float: left;
+	padding-left: 10px;
+}
+#header ul {
+	list-style: none;
+	padding: 0 5px 10px;
+	float: right;
+	border-bottom: 1px solid #B2B2B2;
+	margin-top: 0;
+}
+#header ul li {
+	display: inline;
+	border-left: 1px solid #999999;
+	padding: 0 5px;
+}
+#header #first {
+	border-left: 0;
+}
+#header #submit li {
+	border: 0;
+}
+#header #submit {
+	border: 0;
+}
+#header .button {
+	background: #8BBCD5 url(pics/login_btn.png) no-repeat 0 0;
+	font-size: 110%;
+	color: #ffffff!important;
+	padding: 0px 0px 0px 0px;
+	width: 59px;
+	height: 22px;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 5px;
+	border: 1px solid #4981AE;
+}
+#mid-header {
+	background-color: #4981AE;
+	color: white;
+	font-size: 150%;
+	padding: 15px 10px;
+}
+#breadcrumps {
+	overflow: hidden;
+	/*float: left;*/
+	width: 650px;
+	margin: 20px 0 10px 15px;
+	/*border: 1px solid black;*/
+}
+#breadcrumps ul {
+	list-style: none;
+	float: left;
+	margin: 0 5px 5px 0;
+	/*border: 1px solid black;*/
+	padding: 0;
+	/*text-align: center;*/
+}
+#breadcrumps ul li {
+	display: inline;
+	color: #4981AE;
+	font-size: 80%;
+	/*padding: 0 5px 5px 0;*/
+	/*border: 1px solid black;*/
+	/*vertical-align: center;*/
+}
+#breadcrumps ul li img {
+	padding: 0;
+	vertical-align: bottom;
+}
+#breadcrumps .international {
+	float: right;
+	vertical-align: top;
+}
+#main-content {
+	/*float: left;*/
+	padding-top: 0px;
+	border-top: 1px solid #999999;
+	width: 650px;
+}
+#main-content div {
+	border: 4px solid #8BBCD5;
+	overflow: hidden;
+	padding: 0 5px 10px;
+}
+#main-content div img {
+	float: left;
+}
+#main-content div span {
+	font-weight: bold;
+}
+#main-content div div {
+	border: 0;
+	padding: 0;
+}
+#sidebar {
+	width: 240px;
+	float: left;
+	margin-top: 50px;
+	/*border: 1px solid black;*/
+	margin-left: 10px;
+	/*vertical-align: top;*/
+	/*padding: 0;*/
+}
+#sidebar img {
+	padding: 25px 0;
+}
+.red {
+	color: #E62E00;
+	font-weight: bold;
+}
+#sidebar {
+	font-size: 
+}
+/*#main-content .button2 {
+	background: #8BBCD5 url(/pics/login_btn.png) no-repeat 0 0;
+	font-size: 90%;
+	color: #ffffff!important;
+	padding: 0px 5px 0px 5px;
+	width: auto;
+	height: 22px;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 5px;
+	border: 1px solid #4981AE;
+	/*margin: 3px 5px;*/
+}*/
+
+#main-content div div {
+	padding-bottom: 10px;
+}
+.container-small {
+	float: right;
+	/*border: 1px solid red;*/
+}

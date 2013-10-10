@@ -1,0 +1,86 @@
+<html>
+<head>
+<!-- 	.hide()
+.show()
+.toggle()
+.slideDown()
+.slideToggle()
+.slideUp()
+.fadeOut()
+.fadeIn() -->
+	<title>jQuery Exercise</title>
+	<link rel="stylesheet" type="text/css" href="jquery_exercise.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+			$(document).ready(function(){
+			alert("Hi, CodingDojo!");
+			console.log('Hi CodingDojo!');
+			$('h1').click(function(){
+				$('#special').fadeOut();	
+			});
+			$('h2').click(function(){
+				$('#special').fadeIn();
+			});
+			$('.box5').click(function(){
+				$('.box1').slideToggle('fast');
+			});	
+			$('.box5').click(function('slow'){
+				$('.box2').hide();
+			});
+			$('.box4').click(function(){
+				$('.box2').show();
+			});
+			$('.box3').click(function(){
+				$('.box1').slideToggle();
+			});
+			$('.box5').click(function(){
+				$('.box1').slideUp(1200);
+			});				
+			$('.box2').click(function(){
+				$('.box1').slideDown(1200);
+			});				
+		}); 
+	</script>
+</head>
+<body>
+	<div>
+		<h1>Main Heading</h1>
+		<p>Paragraph</p>
+
+		<h2>Second Heading</h2>
+		<p id="special">Second Paragraph</p>
+
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+		<div class="box box4"></div>
+		<div class="box box5"></div>
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+		<div class="box box4"></div>
+		<div class="box box5"></div>
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+		<div class="box box4"></div>
+		<div class="box box5"></div>
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+		<div class="box box4"></div>
+		<div class="box box5"></div>
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+		<div class="box box4"></div>
+		<div class="box box5"></div>
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+		<div class="box box4"></div>
+		<div class="box box5"></div>
+
+	</div>
+</body>
+</html>
