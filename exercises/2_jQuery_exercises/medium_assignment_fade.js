@@ -2,11 +2,11 @@ $(document).ready(function() {
 
 
 $('img').click(function(){
-		$(this).fadeTo(100, 0.0);
+		$(this).fadeTo(250, 0.0);
 	});
 
 $('#restore').click(function(){
-	$('img').fadeTo(100, 1.0);
+	$('img').fadeTo(250, 1.0);
 })
 
 });
