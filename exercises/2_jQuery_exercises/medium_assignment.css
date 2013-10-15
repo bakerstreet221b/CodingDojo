@@ -1,0 +1,10 @@
+/** {
+	border: 1px solid red;
+}*/
+#box img {
+	margin: 10px; 
+	display: inline;
+}
+#box {
+	width: 900px;
+}
