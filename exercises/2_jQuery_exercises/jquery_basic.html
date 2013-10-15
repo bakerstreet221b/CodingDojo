@@ -1,0 +1,195 @@
+ <!doctype html>
+ <html lang="en">
+ <head>
+ 	<meta charset="utf-8">
+ 	<title>jQuery Basic Assignment</title>
+ 	<meta name='description' content='jQuery exercice: Basic Assignment'>
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+ 	<script type="text/javascript" src="jquery_basic.js"></script>
+ 	<script type="text/javascript" src="dist/js/bootstrap.js"></script>
+ 	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+ 	<link rel="stylesheet" type="text/css" href="jquery_basic.css">
+ 	
+ 	
+ </head>
+ <body>
+ 	<div class="container">
+		
+
+			<div class="jumbotron" id="jumbotron">
+				<h1>jQuery Basic Assignment</h1>
+				<p>This page is dedicated to play through all the basic jQuery function.</p>
+			</div>
+ 	</div>
+
+ 	<div class="container" id="container">
+ 		<div class="row" id="main">
+ 			<div class="col-md-3 col-lg-3">
+				<div id="sidenav" data-spy="affix" data-offset-top="200">
+					<ul class="nav navbar" id="nav">
+						<li class="active">
+							<a href="#UI"><b>jQuers UI</b></a>
+							<ul class="nav">
+								<li><a href="">accordion</a></li>
+								<li><a href="">datepicker</a></li>
+								<li><a href="">dialog</a></li>
+								<li><a href="">tabs</a></li>
+							</ul>
+						</li>
+						<li class="active">
+							<a href=""><b>jQuery</b></a>
+							<ul class="nav">
+								<li><a href="">.addclass</a></li>
+								<li><a href="">.after</a></li>
+								<li><a href="">.append</a></li>
+								<li><a href="">.attr</a></li>
+								<li><a href="">.before</a></li>
+								<li><a href="">.html</a></li>
+								<li><a href="">.val .text .focus</a></li>
+								<li><a href="">.toggle .hide .show</a></li>
+								<li><a href="">.slideUp or Down</a></li>
+								<li><a href="">.fadeOut .fadeIn</a></li>
+								<li><a href="">.submit</a></li>
+								<li><a href="">.serialize</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-9 col-lg-9">
+				<h1>jQuery UI</h1>
+				<h2>accordion</h2>
+				<div id="accordion">
+					<h3>Mars University</h3>
+					<div>
+						<p>Who am I making this out to? What's with you kids? Every other day it's food, food, food. Alright, I'll get you some stupid food. Whoa a real live robot; or is that some kind of cheesy New Year's costume? Too much work. Let's burn it and say we dumped it in the sewer.</p>
+					</div>	
+					<h3>Bender Gets Made</h3>
+					<div>
+						<p>Hello, little man. I will destroy you! Leela's gonna kill me. Oh dear! She's stuck in an infinite loop, and he's an idiot! Well, that's love for you. Now, now. Perfectly symmetrical violence never solved anything. Why am I sticky and naked? Did I miss something fun?</p>
+					</div>	
+					<h3>Teenage Mutant Leela's Hurdles</h3>
+					<div>
+						<p>You'll have all the Slurm you can drink when you're partying with Slurms McKenzie! It's okay, Bender. I like cooking too. I'll tell them you went down prying the wedding ring off his cold, dead finger. Yeah, I do that with my stupidness. Fry! Stay back! He's too powerful! Is today's hectic lifestyle making you tense and impatient?</p>
+					</div>	
+					<h3>Where the Buggalo Roam</h3>
+					<div>
+						<p>It doesn't look so shiny to me. Leela, Bender, we're going grave robbing. Hello Morbo, how's the family? When will that be? All I want is to be a monkey of moderate intelligence who wears a suit&hellip; that's why I'm transferring to business school!</p>
+					</div>	
+					<h3>Leela's Homeworld</h3>
+					<div>
+						<p>Incidentally, you have a dime up your nose. And I'm his friend Jesus. You've killed me! Oh, you've killed me!</p>
+					</div>	
+				</div>	
+				<h2>datepicker</h2>
+				<p>Date: <input type="text" class="datepicker" placeholder="from"/>  <input type="text" class="datepicker" placeholder="to"/></p>
+				<h2>dialog</h2>
+				<p>Look for a box floating around.</p>
+				<div id="dialog" title="The Birdbot of Ice-Catraz">
+					<p>Oh sure! Blame the wizards! Kif, I have mated with a woman. Inform the men. It doesn't look so shiny to me. It's a T. It goes "tuh".</p>
+				</div>
+				<h2>tabs</h2>
+				<div id="tabs">
+				  <ul>
+				    <li><a href="#tabs-1">Jurassic Bark</a></li>
+				    <li><a href="#tabs-2">Godfellas</a></li>
+				    <li><a href="#tabs-3">I Dated a Robot</a></li>
+				  </ul>
+				  <div id="tabs-1">
+				    <p>Well I'da done better, but it's plum hard pleading a case while awaiting trial for that there incompetence. When I was first asked to make a film about my nephew, Hubert Farnsworth, I thought "Why should I?" Then later, Leela made the film. But if I did make it, you can bet there would have been more topless women on motorcycles. Roll film! Hey, whatcha watching? Now, now. Perfectly symmetrical violence never solved anything</p>
+				  </div>
+				  <div id="tabs-2">
+				    <p>Fatal. I'll get my kit! All I want is to be a monkey of moderate intelligence who wears a suit&hellip; that's why I'm transferring to business school!</p>
+						<ul>
+						<li>So I really am important? How I feel when I'm drunk is correct?</li>
+						<li>Well I'da done better, but it's plum hard pleading a case while awaiting trial for that there incompetence.</li>
+						<li>Now what?</li>
+						<li>Yes, I saw. You were doing well, until everyone died.</li>
+						</ul>
+				  </div>
+				  <div id="tabs-3">
+				    <p>And when we woke up, we had these bodies. You are the last hope of the universe. When the lights go out, it's nobody's business what goes on between two consenting adults. Anyhoo, your net-suits will allow you to experience Fry's worm infested bowels as if you were actually wriggling through them. Negative, bossy meat creature!</p>
+				  </div>
+				</div>
+				<h1>jQuery</h1>
+ 				<h2>.addclass</h2>
+ 				<p>Up a class and make it pink.</p>
+ 				<button type="submit" class="btn btn-default" id="btn1">click me!</button> 				
+ 				<h2>.after</h2>
+ 				<p>Push this button and see what happens</p>
+ 				<button type="submit" class="btn btn-info" id="btn_push">button</button> 
+ 				<p></p>				
+ 				<h2>.append</h2>
+ 				<p id="append">I approve .append. push this paragraph if you approve of it too!</p>
+ 				<h2>.attr</h2>
+ 				<p>I have great attributes, just check me out!</p>
+ 				<input id="check1" type="checkbox" checked="checked">
+				<label for="check1">Check me</label>
+				<p></p>
+ 				<h2>.before</h2>
+ 				<button type="submit" class="btn btn-info" id="btn_kitten">Wee, kitties</button> 
+ 				<p></p>
+ 				<h2>.html</h2>
+ 				<p>similar to .text</p>
+ 				<h2>.val, .text and .focus</h2>
+ 				<input type="text" value="email" id="email">
+ 				<button class="btn btn-default" id="btn_input">submit</button>
+				<p id="p_email"></p>
+				<h2>.toggle, .hide and .show</h2>
+ 				<p>Hover over the buttons to change their color or click the buttons.</p>
+ 				<button type="submit" class="btn btn-default" id="btn_hide">click to hide cubes</button>
+ 				<button type="submit" class="btn btn-default" id="btn_show">click to show cubes</button>
+ 				<div class="cubebox">
+	 				<div class="cube cube1"></div>
+	 				<div class="cube cube2"></div>
+	 				<div class="cube cube3"></div>
+	 				<div class="cube cube1"></div>
+	 				<div class="cube cube2"></div>
+	 				<div class="cube cube3"></div>
+	 				<div class="cube cube1"></div>
+	 				<div class="cube cube2"></div>
+	 				<div class="cube cube3"></div>
+ 				</div>
+ 				<h2>.slideDown, .slideToggle and .slideUp</h2>
+ 				<button type="submit" class="btn btn-default" id="btn_slideUp">click to slide cubes up</button>
+ 				<button type="submit" class="btn btn-default" id="btn_slideDown">click to slide cubes down</button>
+ 				<button type="submit" class="btn btn-default" id="btn_slideToggle">click to slide cubes</button>
+ 				<div class="cubebox_lg">
+	 				<div class="cube_lg cube1 slide"></div>
+	 				<div class="cube_lg cube2 slide"></div>
+	 				<div class="cube_lg cube3 slide"></div>
+	 			</div>	
+ 				<h2>.fadeOut and .fadeIn,</h2>
+ 				<button type="submit" class="btn btn-default" id="btn_fadeOut">click to fade cubes out</button>
+ 				<button type="submit" class="btn btn-default" id="btn_fadeIn">click to fade cubes in</button>
+ 				<div class="cubebox_lg">
+	 				<div class="cube_lg cube1 faDe"></div>
+	 				<div class="cube_lg cube2 faDe"></div>
+	 				<div class="cube_lg cube3 faDe"></div>
+	 			</div>	
+ 				<h2>.submit</h2>
+ 				<input type="text" value="text" id="text_box">
+ 				<input type="submit" class="btn btn-default" id="text_submit"></input>
+ 				<span id="text_span"></span>
+ 				<span id="text_span2"></span>
+ 				<h2>.serialize</h2>
+ 				<p>Choose one of the options</p>
+ 				<form id="form">
+ 					<input type="radio" name="radio" value="radio1" checked="checked" id="r1">
+				  <label for="r1">Option 1</label>
+				  <input type="radio" name="radio" value="radio2" id="r2">
+				  <label for="r2">Option 2</label>
+ 				</form>
+ 			</div>
+ 			<hr>
+ 		</div>
+ 		<div class="footer">
+ 			made by Thereza Scherrer
+ 		</div>
+ 	</div>
+ </body>
+ </html>

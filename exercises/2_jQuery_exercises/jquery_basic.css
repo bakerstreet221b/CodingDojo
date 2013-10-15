@@ -1,0 +1,72 @@
+/** {
+	border:	1px dotted red;
+}*/
+#sidenav.affix {
+    position: fixed;
+    top: 30px;
+    width: 200px;
+}
+#sidenav {
+	height: 30px;
+}
+.row {
+	margin-left: 0;
+}
+#jumbotron {
+	margin-top: 30px;
+}
+#btn_push {
+	margin-bottom: 10px;
+}
+#btn1:hover, #btn1:focus {
+	color: #fff;
+	background-color: #D8005F;
+	border-color: #D8005F;
+}
+.cubebox {
+	margin-top: 10px;
+	width: 140px;
+	height: 120px;
+	overflow: hidden;
+}
+.cubebox_lg {
+	margin-top: 10px;
+	width: 340px;
+	height: 120px;
+	overflow: hidden;
+}
+.cube {
+	width: 30px;
+	height: 30px;
+	float: left;
+	margin: 5px;	
+}
+.cube_lg {
+	width: 90px;
+	height: 90px;
+	float: left;
+	margin: 5px;	
+}
+.cube1 {
+	background-color: #007929;
+}
+.cube2 {
+	background-color: #A65500;
+}
+.cube3 {
+	background-color: #8C003D;
+}
+.green {
+	background-color: #37DD6F;
+}
+.pink {
+	background-color: #D8005F;
+	border-color: #D8005F;
+	color: #fff;
+}
+.red {
+	color: #E9003A;
+}
+/*.ui-accordion .ui-accordion-content {
+	height: 100px;
+}*/

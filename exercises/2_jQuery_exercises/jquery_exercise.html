@@ -10,77 +10,84 @@
 .fadeIn() -->
 	<title>jQuery Exercise</title>
 	<link rel="stylesheet" type="text/css" href="jquery_exercise.css">
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 			$(document).ready(function(){
-			alert("Hi, CodingDojo!");
-			console.log('Hi CodingDojo!');
+			
 			$('h1').click(function(){
 				$('#special').fadeOut();	
 			});
 			$('h2').click(function(){
 				$('#special').fadeIn();
 			});
-			$('.box5').click(function(){
-				$('.box1').slideToggle('fast');
-			});	
-			$('.box5').click(function('slow'){
-				$('.box2').hide();
+			$('.box1').click(function(){
+				$('.box2').fadeToggle('slow');
 			});
-			$('.box4').click(function(){
-				$('.box2').show();
+			$('.box1').click(function(){
+				$('.box5').slideToggle('fast');
 			});
-			$('.box3').click(function(){
-				$('.box1').slideToggle();
+			$('.red').focus(function(){
+				$(this).css('outline-color', '#F5001D');
 			});
-			$('.box5').click(function(){
-				$('.box1').slideUp(1200);
-			});				
-			$('.box2').click(function(){
-				$('.box1').slideDown(1200);
-			});				
+			$('.green').focus(function(){
+				$(this).css('outline-color', '#8FB52B');
+			});
+			$('.box').hover(function(){
+				$(this).toggleClass('redd');
+			});
+			
 		}); 
 	</script>
 </head>
 <body>
-	<div>
-		<h1>Main Heading</h1>
-		<p>Paragraph</p>
+	<div class="container">
+		<div class="header">
+			<h1>Main Heading</h1>
+			<p>Paragraph</p>
 
-		<h2>Second Heading</h2>
-		<p id="special">Second Paragraph</p>
-
-		<div class="box box1"></div>
-		<div class="box box2"></div>
-		<div class="box box3"></div>
-		<div class="box box4"></div>
-		<div class="box box5"></div>
-		<div class="box box1"></div>
-		<div class="box box2"></div>
-		<div class="box box3"></div>
-		<div class="box box4"></div>
-		<div class="box box5"></div>
-		<div class="box box1"></div>
-		<div class="box box2"></div>
-		<div class="box box3"></div>
-		<div class="box box4"></div>
-		<div class="box box5"></div>
-		<div class="box box1"></div>
-		<div class="box box2"></div>
-		<div class="box box3"></div>
-		<div class="box box4"></div>
-		<div class="box box5"></div>
-		<div class="box box1"></div>
-		<div class="box box2"></div>
-		<div class="box box3"></div>
-		<div class="box box4"></div>
-		<div class="box box5"></div>
-		<div class="box box1"></div>
-		<div class="box box2"></div>
-		<div class="box box3"></div>
-		<div class="box box4"></div>
-		<div class="box box5"></div>
-
+			<h2>Second Heading</h2>
+			<p id="special">Second Paragraph</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="effects">
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+			<div class="box box5"></div>
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+			<div class="box box5"></div>
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+			<div class="box box5"></div>
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+			<div class="box box5"></div>
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+			<div class="box box5"></div>
+			<div class="box box1"></div>
+			<div class="box box2"></div>
+			<div class="box box3"></div>
+			<div class="box box4"></div>
+			<div class="box box5"></div>
+		</div>
+		<div class="forms">
+			<input type="text" placeholder="Username" class="input red">
+			<input type="text" placeholder="Password" class="input green">
+		</div>	
 	</div>
 </body>
 </html>

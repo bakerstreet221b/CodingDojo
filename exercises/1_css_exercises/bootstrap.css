@@ -10,9 +10,9 @@
 
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 
-/* * {
-  border: 1px dotted red;
-}*/
+ /** {
+  border: 1px dotted red;*/
+}
 article,
 aside,
 details,
@@ -6823,5 +6823,6 @@ footer p.right {
   float: right;
 }
 .margin_top {
-  margin-top: 55px;
+  margin-top: 30px;
 }
+
