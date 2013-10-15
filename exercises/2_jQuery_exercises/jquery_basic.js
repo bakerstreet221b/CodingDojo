@@ -58,21 +58,22 @@ $(document).ready(function() {
   		var text = $('#email').val();
   		$( "#p_email" ).append( text );
   	});
-  	$('#text_submit').click(function(){
+  	$('#text_submit').submit(function(event){
+  		alert("success");
   		$('#text_span').text( $('#text_box').val() ).show();
+  		event.preventDefault();
   	});
 // 	$( "button" ).click(function() {
 //   var text = $( this ).text();
 //   $( "input" ).val( text );
 // });
-	$( "check1" )
-	.change(function() {
+	$( "check1" ).change(function() {
 	    var $input = $( "check1" );
 	    $( "p" ).html( ".attr( 'checked' ): <b>" + $input.attr( "checked" ) + "</b><br>" +
 	      ".prop( 'checked' ): <b>" + $input.prop( "checked" ) + "</b><br>" +
 	      ".is( ':checked' ): <b>" + $input.is( ":checked" ) + "</b>" );
 	})
-	change();
+	$( "check1" ).change();
 
 	function showValues() {
 	    var str = $( "form" ).serialize();
