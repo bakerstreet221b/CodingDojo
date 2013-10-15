@@ -1,5 +1,9 @@
 Handouts/*
 exercises/pics/*
 exercises/.DS_Store
-notes.txt
+exercises/1_css_exercises/dist/
+exercises/2_jQuery_exercises/dist/
+*.zip
+exercises/2_jQuery_exercises/try.html
+*.txt
 .DS_Store
