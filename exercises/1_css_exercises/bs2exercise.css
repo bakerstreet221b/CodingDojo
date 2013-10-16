@@ -1,0 +1,53 @@
+/*My code*/
+span {
+  color: #00BB3F;
+}
+footer {
+  overflow: hidden;
+}
+footer p.left {
+  float: left;
+}
+
+footer p.right {
+  float: right;
+}
+.margin_top {
+  margin-top: 30px;
+}
+#sidenav.affix {
+    position: fixed;
+    top: 70px;
+    width: 200px;
+
+}
+#nav {
+	background-color: #EB6AA3;
+	color: #8C003D;
+	width: 200px;
+}
+#nav a {
+	
+	color: #8C003D;
+	
+}
+.jumbotron {
+	background-color: #B8005F;
+}
+#sidenav {
+	color: #B8005F;
+	background-color: ;
+}
+#btn {
+	border: 1px solid white;
+	color: #fff;
+	/*background-color: transparent;*/
+}
+.white {
+	background-color: #fff;
+	/*color: #B8005F !important;*/
+}
+#btn:hover {
+  color: #B8005F;
+  text-decoration: none;
+}
