@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<style type="text/css">
+.trbg {
+	background-color: #B2B2B2;
+}
+</style>
+<script type="text/javascript">
+
+var mytable = "<table cellpadding=\"0\" cellspacing=\"0\"><thead><tr>"
+for (var i = 0; i < 10; i++) {
+	mytable += "<td><b>"+i+"</b></td>"
+}
+
+mytable += "</tr></thead><tbody>";
+
+for (var i = 1; i < 10; i++) {
+  mytable += "<tr class='"+(i % 2 == 0 ? 'even' : 'odd')+"'><td><b>"+i+"</b>"
+  
+  for (var y = 1; y < 10; y++) {
+  	mytable += "<td>"+ i*y +"</td>"
+  }
+  mytable += "</tr>";
+}
+mytable += "</tbody></table>";
+
+document.write(mytable);
+
+</script>
+<style type="text/css">
+table {
+	border: 0px solid red;
+}
+tr.odd {
+	background-color: #B2B2B2;	
+}
+td {
+	padding: 10px;
+}
+</style>
+</html>
