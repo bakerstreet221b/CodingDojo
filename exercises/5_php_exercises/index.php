@@ -64,7 +64,7 @@ $y = array(	strlen($x),
 		<h2>Functions for Numbers</h2>
 <?php
 	$number = 2;
-	echo "Number: ".$numbers."<br />";
+	echo "Number: ".$number."<br />";
 	echo "Numbers: ";
 	var_dump($numbers = array(1,2,3,4,5));
 	echo "<br />Number is_numeric? ";
@@ -122,6 +122,73 @@ $y = array(	strlen($x),
 	Do {
 		echo "pip ";
 	} while ($i > 0);
+?>
+	<h2>Functions</h2>
+		<h3>Average</h3>	
+<?php
+	
+
+	function average($array){
+		$total = 0;
+		foreach ($array as $each){
+			$total += $each;
+		};
+		return "The average of this array is " . $total/count($array);		
+	};
+	
+	$ten = array(1,2,3,4,16,17,18,19);
+	echo average($ten);
+?>
+		<h3>Reverse</h3>
+<?php
+	function my_reverse($data){
+		$revdata = array();
+		for ($i=count($data)-1;$i>=0;$i--){
+			if (is_numeric($data[$i])) {
+
+				$revdata[] = $data[$i];
+
+			} else {
+				$str = $data[$i];
+				$revstr = "";
+				for($j=strlen($str)-1;$j>=0; $j--){
+					$revstr .= $str[$j];
+				};
+				$revdata[] = $revstr;
+			};
+		};
+		return $revdata;
+	};
+	$random = array(1,34,"dash",67,8,"raindbow", "fluttershy");
+	$output = my_reverse($random);
+	foreach ($output as $value) {
+		echo $value . " ";
+	};
+?>
+		<h3>Rolling the Dice</h3>
+<?php
+function roll_dice($max) {
+	$dice = array(0,0,0,0,0,0,0);
+	$prev_die = 0;
+	for($i = 0; $i < $max; $i++) {
+		$die = rand(1,6);
+		$dice[$die]++ ;
+		// echo ($die == $prev_die? "Result: " . $die . " Wow. You rolled the same number twice in a row!<br />" : "Result: " . $die . "<br />");
+		// $prev_die = $die;
+	};
+	
+	echo "<ul>";
+	foreach ($dice as $key => $value) {	
+		if ($key > 0){
+			$perc = ($value * 100) / $max;
+			echo "<li>Number " . $key . " : 
+			" . $value . "/" . $max . " times (" . $perc . "%)</li>";	
+		};
+	};
+	echo "</ul>";
+};
+roll_dice(50);
+roll_dice(1000);
 ?>
 		<footer><hr>by Thereza Scherrer, 2013</footer>
 	</div>
