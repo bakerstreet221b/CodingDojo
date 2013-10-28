@@ -1,9 +1,14 @@
 Handouts/*
+Belt/*
 exercises/pics/*
+exercises/2_jQuery_exercises/pics/*
 exercises/.DS_Store
-exercises/1_css_exercises/dist/
-exercises/2_jQuery_exercises/dist/
-*.zip
+exercises/1_css_exercises/dist/*
+exercises/2_jQuery_exercises/dist/*
+exercises/5_php_exercises/dist/*
+exercises/5_php_exercises/require_include/dist/*
 exercises/2_jQuery_exercises/try.html
+*.zip
 *.txt
 .DS_Store
+.gitignore
