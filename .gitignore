@@ -8,6 +8,7 @@ exercises/2_jQuery_exercises/dist/*
 exercises/5_php_exercises/dist/*
 exercises/5_php_exercises/require_include/dist/*
 exercises/2_jQuery_exercises/try.html
+exercises/5_php_exercises/short_exercise.php
 *.zip
 *.txt
 .DS_Store
