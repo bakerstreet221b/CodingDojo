@@ -9,7 +9,10 @@
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" type="text/css" media="all" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-	 <script type="text/javascript">
+	<style type="text/css">
+
+	</style>
+	<script type="text/javascript">
 	 	$(document).ready(function(){
 
 	 		$('.datepicker').datepicker({
@@ -18,19 +21,41 @@
 			    	$('#test_form').submit();			        
 			     }
 			});	
-	 		 		
+	 				
 	 		$('input').keyup(function(){
 	 			$('#test_form').submit();
 	 		});
 
+	 		
+
 	 		$('#test_form').submit(function(){
 	 			$.post(
-					$(this).attr('action'), $(this).serialize(), function(data){
-						$('#results').html(data.html);
+					$(this).attr('action'), $(this).serialize(), function(data){						
+						
+
+						var nums = data.page_num;
+						var pages = "<div id='paginate'>";
+						for (var i=1; i <= nums; i++) { 
+							pages += "<a class='btn btn-default btn-sm' href='process.php?page="+i+"'>"+i+"</a> ";
+						}
+						pages += "</div>"
+						$('#pages').html(pages);
+
+						$('#results').html(data.html);	
+
+						$('#paginate a').click("submit", function(){
+				 			$.post(
+								$(this).attr('href'), $('#test_form').serialize(), function(data){			
+									$('#results').html(data.html);				
+								}, 'json');
+				 			
+				 			return false;
+				 		});						
 					}, 'json');
 	 			
 	 			return false;
 	 		});
+
 	 		$('#test_form').submit();
 	 	});
 	 </script>
@@ -48,10 +73,13 @@
 			<input class='form-control datepicker' type='text' placeholder='To' name='to_date'>
 			</div>
 			<input class='btn btn-success' type='submit' value='Submit'>
+			
 		</form>
 		
 	</div>
 	<div class='container'>
+		<div id='pages'></div>	
+			
 		<div id='results'>
 		</div>
 	</div>

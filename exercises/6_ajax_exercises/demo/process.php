@@ -20,7 +20,9 @@
 		
 		$query = "SELECT * FROM leads 
 			WHERE (first_name LIKE '{$name}%' OR last_name LIKE '{$name}%') 
-			AND registered_datetime BETWEEN '".$start."' AND '".$end."'ORDER by leads_id DESC";
+			AND registered_datetime BETWEEN '".$start."' AND '".$end."'
+
+			ORDER by leads_id DESC";
 	}
 	else if (given('from_date') && !given('to_date') && given('name')) {
 
@@ -63,8 +65,9 @@
 	}
 
 	$users = fetch_all($query);		
-
-	$html = "<table class='table table-hover'>
+	$page_num = ceil(count($users)/10);
+	
+	$html = "</form></div><table class='table table-hover'>
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -75,6 +78,13 @@
 					</tr>
 				</thead>
 				<tbody>";
+	$users = fetch_all($query. "LIMIT 0,10");
+	if(@$_GET['page'] > 1)
+	{
+		// echo $_POST['page'];
+		// echo $query. "LIMIT".(($_GET['page']*10)-9).",10";
+		$users = fetch_all($query."LIMIT ".(($_GET['page']*10)-10).",10");
+	}
 	foreach ($users as $user) 
 	{
 		$date = new DateTime($user['registered_datetime']);
@@ -89,7 +99,7 @@
 	}
 	$html .= "</tbody></table>";
 
-
+	$data['page_num'] = $page_num;
 	$data['html'] = $html;
 	echo json_encode($data);
 
