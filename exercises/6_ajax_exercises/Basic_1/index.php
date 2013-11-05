@@ -23,7 +23,6 @@
 	}
 	h4 {
 		background-color: #FFDE00;
-		/*border: 1px solid #FFDE00;*/
 		margin-bottom: 0;
 		padding: 10px;
 	}
@@ -58,12 +57,10 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 
-			$('.del_form').on("submit",function(){
-				// alert('qwerrty');
+			$('.del_form').on("submit",function(){				
 				var form = $(this);
 				$.post(
 					$(this).attr('action'), $(this).serialize(), function(data){
-						// alert("ajax");
 						$(form.parent()).remove();
 					}, "json");
 				return false;
@@ -71,20 +68,29 @@
 
 
 			function divClicked() {
-			    var divHtml = $(this).text();
+			    var divHtml = $(this).html();
 			    var editableText = $("<textarea rows='10' cols='26' name='description'></textarea>");
 			    editableText.val(divHtml);
-			    $(this).empty();
-			    $(this).append(editableText);
-			    editableText.focus();
-			}
+			    $(this).replaceWith(editableText);
+			    editableText.focus()
+
+			    editableText.blur(editableTextBlurred);
+			};
+			function editableTextBlurred() {
+			    var html = $(this).val();
+			    var viewableText = $("<div class='postit'></div>");
+			    viewableText.html(html);
+			    $(this).replaceWith(viewableText);
+			    
+			    $(viewableText).click(divClicked);
+			};
 
 			$(".postit").click(divClicked);
 			
 			
-			$('#post_its').on ("submit", function(){				
+			$('#post_its').on ("submit", function(){							
 				$.post(
-					$(this).attr('action'), $(this).serialize(), function(param){
+					$(this).attr('action'), $(this).serialize(), function(param){						
 						$('#box').append(param.html);
 						
 						$('.del_form').on("submit",function(){				
@@ -96,17 +102,15 @@
 							return false;
 						});
 
-						// $(".postit").click(divClicked);
+						$(".postit").click(divClicked);
 
-						// $('.edit_form').on("submit",function(){
-						// 	var form = $(this);				// alert('qwerrty');
-						// 	$.post(
-						// 		$(this).attr('action'), $(this).serialize(), function(data){
-						// 			// alert('ajax');
-						// 			$(form.parent().html(data.html);
-						// 		}, "json");
-						// 	return false;
-						// });
+						$('.edit_form').on("submit",function(){
+							var form = $(this);
+							$.post(
+								$(this).attr('action'), $(this).serialize(), function(data){
+								}, "json");
+							return false;
+						});
 					}, "json");
 				return false;
 			});
@@ -114,29 +118,18 @@
 			
 
 			$('.edit_form').on("submit",function(){
-				var form = $(this);				// alert('qwerrty');
+				var form = $(this);
 				$.post(
-					$(this).attr('action'), $(this).serialize(), function(data){
-						// alert('ajax');						
-						$(form.parent()).html(data.html);
+					$(this).attr('action'), $(this).serialize(), function(data){						
 					}, "json");
 				return false;
 			});
-
-			
-			
-
-			
-			    
-			
-			
 		});
 	</script>
 </head>
 <body>
 	<div class='container'>
 		<h1>My Posts:</h1>
-		<!-- <div id='test'></div> -->
 		<div id='box'>
 		<?php
 			foreach ($posts as $post) {
@@ -154,19 +147,13 @@
 						<input type='hidden' name='action' value='delete_note'>
 						<input type='submit' class='btn btn-default btn-sm' value='delete'>
 					</form>
-					
-
 					</div>";
 			};
-			
-			
+						
 		?>
-		<!-- <img src='delete.png' id='".$post['id']."' class='delete_img'> -->
-		</div>
-		
-		
-		<form class='navbar' action='process.php' method='post' id='post_its'>			
 
+		</div>
+		<form class='navbar' action='process.php' method='post' id='post_its'>			
 			<div class='form-group'>
 			<input class='form-control' type='text' placeholder='Insert note title here: ' name='title'>
 			</div>
