@@ -65,12 +65,13 @@ function postAction()
 
 function postUpdateAction()
 {
-	if (isset($_POST['description']) AND $_POST['description'] != '') 
+	if (isset($_POST['description']) AND (!empty($_POST['description']))) 
 	{
 		$query = "UPDATE notes SET description='{$_POST['description']}', updated_at=NOW() WHERE id=".$_POST['note_id'];
 		mysql_query($query);
 
 		echo json_encode("updated");	
 	};	
+	// echo json_encode("notupdated");
 }
 ?>
