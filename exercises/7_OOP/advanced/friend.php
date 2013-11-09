@@ -20,11 +20,7 @@ class Friend {
 
     function usersListAction()
     {        
-        $query = "SELECT t1.id, t2.friend_id, concat(t1.first_name,' ' , t1.last_name) as name, t1.email 
-            FROM users as t1
-            LEFT JOIN friends as t2
-            ON t1.id = t2.user_id
-            ORDER BY t1.id";
+        $query = "SELECT id, concat(first_name,' ' , last_name) as name, email, (select count(*) from friends where user_id = id and friend_id = ".$_SESSION['id'].") as is_friend FROM users";
         $all_users = $this->connection->fetch_all($query);        
         $_SESSION['all_users'] = $all_users;
     }

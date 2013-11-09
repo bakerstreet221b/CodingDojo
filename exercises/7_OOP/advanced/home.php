@@ -23,6 +23,9 @@
         #form {
             float: right;
         }
+        .container {
+            width: 960px;
+        }
     </style>
 	<script type="text/javascript">
 
@@ -95,7 +98,7 @@
                 $titles = array_keys(end($users));
                 foreach($titles as $title)
                 {
-                    if(!($title == 'id' || $title == 'friend_id'))
+                    if(!($title == 'id' || $title == 'is_friend'))
                     {
                     $html .= "<th>".ucwords($title)."</th>";
                     }
@@ -105,7 +108,7 @@
                 {                                                                                    
                     foreach($user as $key => $value)
                     {
-                        if(!($key =='id' || $key == 'friend_id' || $_SESSION['id'] == $user['id']))
+                        if(!($key =='id' || $key == 'is_friend' || $_SESSION['id'] == $user['id']))
                         {
                         $html .= "<td>".$value."</td>";
                         }
@@ -114,14 +117,14 @@
                     {
                         // $html .= "<td>Self</td>";
                     }
-                    elseif($_SESSION['id'] == $user['friend_id'])
+                    elseif($user['is_friend'] == 0)
                     {
-                        $html .= "<td>Friends</td>";
+                        $_SESSION['friends_id'] = $user['id'];
+                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='add_friend'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td>";                                        
                     }
                     else
                     {                        
-                        $_SESSION['friends_id'] = $user['id'];
-                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='add_friend'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td>";                
+                        $html .= "<td>Friends</td>";
                     }
                     $html .= "</tr><tr>";
                 }
