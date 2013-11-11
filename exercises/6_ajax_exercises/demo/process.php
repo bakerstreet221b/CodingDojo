@@ -33,7 +33,7 @@
 		
 		$query = "SELECT * FROM leads 
 			WHERE (first_name LIKE '{$name}%' OR last_name LIKE '{$name}%') 
-			AND registered_datetime > '".$start."' ORDER by leads_id DESC";
+			AND registered_datetime > '".$start."'";
 	}
 	else if (given('from_date') && !given('to_date') && !given('name')) {
 
@@ -43,7 +43,7 @@
 		$start = $new_from_date->format('Y-m-d');
 		
 		$query = "SELECT * FROM leads 
-			WHERE registered_datetime > '".$start."' ORDER by leads_id DESC";
+			WHERE registered_datetime > '".$start."'";
 	}
 	else if (given('from_date') && given('to_date') && !given('name')) {
 		$from_date = $_POST['from_date'];
@@ -56,7 +56,7 @@
 		
 		$query = "SELECT * FROM leads 
 			WHERE registered_datetime BETWEEN '".$start."' 
-			AND '".$end."'ORDER by leads_id DESC";
+			AND '".$end."'";
 	}
 	else {
       	$query = "SELECT * FROM leads 
