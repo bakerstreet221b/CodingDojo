@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>Ajax</title>
-    <link rel="stylesheet" type="text/css" href="demo/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="Basic_1/bootstrap.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
 
