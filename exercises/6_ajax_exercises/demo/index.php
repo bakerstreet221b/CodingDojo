@@ -36,12 +36,12 @@
 						var nums = data.page_num;
 						var pages = "<div id='paginate'>";
 						for (var i=1; i <= nums; i++) { 
+							$('#results').html(data.html);	
 							pages += "<a class='btn btn-default btn-sm' href='process.php?page="+i+"'>"+i+"</a> ";
 						}
 						pages += "</div>"
+						
 						$('#pages').html(pages);
-
-						$('#results').html(data.html);	
 
 						$('#paginate a').click("submit", function(){
 				 			$.post(
@@ -82,6 +82,8 @@
 			
 		<div id='results'>
 		</div>
+		<hr>
+		<footer>Made with love by Thereza, 2013</footer>
 	</div>
 
 </body>
