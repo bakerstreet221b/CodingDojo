@@ -14,12 +14,28 @@ class person {
 		return $this->$pinn_number;
 	}
 
-	function set_name($new_name) {
-		$this->name = $new_name;
+	public function get_name() {
+		return $this->name;
 	}
 
-	function get_name() {
-		return $this->name;
+	protected function set_name($new_name) {
+		if ($new_name != "Jimmy Two Guns") {
+			$this->name = strtoupper($new_name);
+		}
+	}	
+}
+class employee extends person {
+	protected function set_name($new_name) {
+		if ($new_name == "Stefan Lamp") {
+			$this->name = $new_name;
+		}
+		else if($new_name == "Herbert Hawnthorn") {
+			parent::set_name($new_name);
+		}
+	}
+
+	function __construct($employee_name) {
+		$this->set_name($employee_name);
 	}
 }
 

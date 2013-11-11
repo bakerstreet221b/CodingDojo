@@ -15,7 +15,8 @@
 
 		echo "Stefan's full name: " . $stefan->get_name();
 
-		// echo "Tell me private stuff: " . $stefan->$pinn_number;
+		$herb = new employee("Herbert Hawnthorn");
+		echo "-->" . $herb->get_name();
 	?>
 
 	</div>
