@@ -19,7 +19,7 @@ class bike {
 
 	public function drive() {
 		echo "Driving<br>";
-		$this->miles = $this->miles + 10;
+		$this->miles += 10;
 	}
 
 	public function reverse(){
@@ -29,7 +29,7 @@ class bike {
 		else
 		{
 			echo "Reversing<br>";
-			$this->miles = $this->miles - 5;
+			$this->miles -= 5;
 		}
 	}
 }
