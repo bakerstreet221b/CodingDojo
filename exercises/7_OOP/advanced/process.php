@@ -2,21 +2,32 @@
 	include('connection.php');
 	session_start();
 
-	class Process {
+	class LoginController {
 
-		var $connection;
+		private $connection;
 
-		function __construct(){
+		function __construct() {
+
+			// In a constructor every property gets its value. No property should be null. 
+			// A constructor must not do anything beside that: no side-effects.
 
 			$this->connection = new Database();
 
-			if (isset($_POST['action']) && $_POST['action'] == 'login') 
+		}
+
+		function processFormData($data) {
+
+			// Law of Demeter: objects only talk to their friends. Friends are $this, properties,
+			// method arguments (if any of these is an array, its elements are friends too.) 
+			// Friends of friends are not friends, avoid method chaining.  
+
+			if (isset($data['action']) && $data['action'] == 'login') 
 			{
-				$this->loginAction(); 
+				$this->loginAction($data); 
 			}
-			elseif (isset($_POST['action']) && $_POST['action'] == 'registration') 
+			elseif (isset($data['action']) && $data['action'] == 'registration') 
 			{
-				$this->registerAction();
+				$this->registerAction($data);
 			}
 			else
 			{				
@@ -25,14 +36,14 @@
 			}
 		}
 
-		function loginAction(){
+		function loginAction($data){
 			$errors = array();
 
-			if (!(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))){
+			if (!(isset($data['email']) && filter_var($data['email'], FILTER_VALIDATE_EMAIL))){
 				$errors[] = "Email not valid";
 			}
 
-			if (!(isset($_POST['password']) && strlen($_POST['password'])>6)){
+			if (!(isset($data['password']) && strlen($data['password'])>6)){
 				$errors[] = "Password not valid";
 			}
 
@@ -43,7 +54,7 @@
 			}
 			else
 			{
-				$query = "SELECT * FROM users WHERE email='{$_POST['email']}' AND password='{$_POST['password']}'";				
+				$query = "SELECT * FROM users WHERE email='{$data['email']}' AND password='{$data['password']}'";				
 				$user = $this->connection->fetch_all($query);
 
 				if (count($user)>0){
@@ -64,26 +75,26 @@
 			}
 		}
 
-		function registerAction(){
+		function registerAction($data){
 			$errors = array();
 			
-			if (!(isset($_POST['first_name']) && is_string($_POST['first_name']) && strlen($_POST['first_name'])>2)) {
+			if (!(isset($data['first_name']) && is_string($data['first_name']) && strlen($data['first_name'])>2)) {
 				$errors[] = "First Name not valid";
 			}
 
-			if (!(isset($_POST['last_name']) && is_string($_POST['last_name']) && strlen($_POST['last_name'])>2)) {
+			if (!(isset($data['last_name']) && is_string($data['last_name']) && strlen($data['last_name'])>2)) {
 				$errors[] = "Last Name not valid";				
 			}
 
-			if (!(isset($_POST['email']) && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))) {
+			if (!(isset($data['email']) && filter_var($data['email'], FILTER_VALIDATE_EMAIL))) {
 				$errors[] = "Email not valid";
 			}
 
-			if (!(isset($_POST['password']) && strlen($_POST['password'])>6)) {
+			if (!(isset($data['password']) && strlen($data['password'])>6)) {
 				$errors[] = "Password not valid";				
 			}
 
-			if (!(isset($_POST['conf_password']) && $_POST['password'] == $_POST['conf_password'])) {
+			if (!(isset($data['conf_password']) && $data['password'] == $data['conf_password'])) {
 				$errors[] = "Confirmed password not equal to password";				
 			}
 
@@ -93,17 +104,17 @@
 			}
 			else
 			{
-				$query = "SELECT * FROM users WHERE email = '{$_POST['email']}'";
+				$query = "SELECT * FROM users WHERE email = '{$data['email']}'";
 				$user = $this->connection->fetch_all($query);
 
 				if (count($user)>0) {
-					$errors[] = "Account with email ".$_POST['email']." already exists.";
+					$errors[] = "Account with email ".$data['email']." already exists.";
 					$_SESSION['errors'] = $errors;
 					header('Location: login.php');
 				}
 				else
 				{
-					$query = "INSERT INTO users (first_name, last_name, email, password, created_at) VALUES ('{$_POST['first_name']}', '{$_POST['last_name']}', '{$_POST['email']}', '{$_POST['password']}', NOW())";
+					$query = "INSERT INTO users (first_name, last_name, email, password, created_at) VALUES ('{$data['first_name']}', '{$data['last_name']}', '{$data['email']}', '{$data['password']}', NOW())";
 					mysql_query($query);
 
 					$success[] = "Registration successfull!";
@@ -114,6 +125,7 @@
 		}
 	}
 
-$process = new Process();
 
-?>
+$login = new LoginController();
+$login->processFormData($_POST);
+
