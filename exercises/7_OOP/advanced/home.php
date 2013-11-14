@@ -3,13 +3,17 @@
 	include('connection.php');
     include('friend.php');
 
-    $friend = new Friend();
+    $person = new Person($_SESSION['id']);
+    Person::currentUser();
+    // $classname = 'Person';
+    // $classname::currentUser();
+    
 
 	if (!isset($_SESSION['logged_in'])) {
 		header('Location: login.php');
 	};
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $friend->addFriendsAction();
+      $person->becomeFriendsWith($_POST['action']);
       exit();
     }
 ?>
@@ -18,7 +22,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Friends Finder</title>
-	<link rel="stylesheet" type="text/css" href="../../dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css">
 	<style type="text/css">
         #form {
             float: right;
@@ -35,12 +39,12 @@
 	<div class='container'>
 		<div class='jumbotron'><h1>Friends Finder</h1></div>
         <?php
-        if (isset($_SESSION['messages'])) {
-            foreach ($_SESSION['messages'] as $message) {
-                echo "<div class='alert alert-success'>".$message."</div>";
-            }		
-            unset($_SESSION['messages']);
-        };        
+        // if (isset($_SESSION['messages'])) {
+        //     foreach ($_SESSION['messages'] as $message) {
+        //         echo "<div class='alert alert-success'>".$message."</div>";
+        //     }		
+        //     unset($_SESSION['messages']);
+        // };        
         ?>
 		<div class='box' id='greeting'>            
             <form action='process.php' method='post' role='form' id='form'>
@@ -76,15 +80,15 @@
                 $html .= "</tr></tbody></table>";
                 echo $html;
             }
-            $friend->friendsListAction();
-            if(!empty($_SESSION['friends'])) {                
-                friendsTable($_SESSION['friends']);
+            $friends = $person->getAllFriends();
+            
+            if(isset($friends)) {                
+                friendsTable($friends);
             }
             else
             {
                 echo "<div class='alert alert-info'>No friends added yet.</div>";
             }
-//            var_dump($_SESSION['friends']);
             ?>
             </div>    
 		</div>
@@ -108,7 +112,7 @@
                 {                                                                                    
                     foreach($user as $key => $value)
                     {
-                        if(!($key =='id' || $key == 'is_friend' || $_SESSION['id'] == $user['id']))
+                        if(!($key == 'id' || $key == 'is_friend' || $_SESSION['id'] == $user['id']))
                         {
                         $html .= "<td>".$value."</td>";
                         }
@@ -118,9 +122,8 @@
                         // $html .= "<td>Self</td>";
                     }
                     elseif($user['is_friend'] == 0)
-                    {
-                        $_SESSION['friends_id'] = $user['id'];
-                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='add_friend'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td>";                                        
+                    {                        
+                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='".$user['id']."'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td>";                                        
                     }
                     else
                     {                        
@@ -132,9 +135,9 @@
                 $html .= "</tbody></table>";
                 echo $html;
             }    
-            $friend->usersListAction();
-           
-            usersTable($_SESSION['all_users']);
+            $users = $person->getEverybody();
+            
+            usersTable($users);
 
             ?>
             </div>  
