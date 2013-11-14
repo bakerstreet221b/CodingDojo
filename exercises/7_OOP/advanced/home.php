@@ -3,11 +3,7 @@
 	include('connection.php');
     include('friend.php');
 
-    $person = new Person($_SESSION['id']);
-    Person::currentUser();
-    // $classname = 'Person';
-    // $classname::currentUser();
-    
+    $person = Person::currentUser();
 
 	if (!isset($_SESSION['logged_in'])) {
 		header('Location: login.php');
@@ -42,11 +38,11 @@
         // if (isset($_SESSION['messages'])) {
         //     foreach ($_SESSION['messages'] as $message) {
         //         echo "<div class='alert alert-success'>".$message."</div>";
-        //     }		
+        //     }
         //     unset($_SESSION['messages']);
-        // };        
+        // };
         ?>
-		<div class='box' id='greeting'>            
+		<div class='box' id='greeting'>
             <form action='process.php' method='post' role='form' id='form'>
                 <div id='form-group'>
                 <input type='submit' value='Log off' class='btn btn-danger'>
@@ -61,28 +57,25 @@
             <div class='col-md-6'>
             <?php
             function friendsTable($users)
-            {       
+            {
                 $html = "<table class='table table-bordered'><thead><tr>";
-                $titles = array_keys(end($users));
+                $titles = array('name','email');
                 foreach($titles as $title)
                 {
                     $html .= "<th>".ucwords($title)."</th>";
                 }
-                $html .= "</tr></thead><tbody><tr>";
+                $html .= "</tr></thead><tbody>";
                 foreach($users as $user)
-                {                                                                
-                    foreach($user as $value)
-                    {
-                        $html .= "<td>".$value."</td>";
-                    }
-                    $html .= "</tr><tr>";
+                {
+                    $html .= "<tr><td>".$user->name."</td>";
+                    $html .= "<td>".$user->email."</td></tr>";
                 }
-                $html .= "</tr></tbody></table>";
+                $html .= "</tbody></table>";
                 echo $html;
             }
             $friends = $person->getAllFriends();
-            
-            if(isset($friends)) {                
+
+            if(count($friends) > 0) {
                 friendsTable($friends);
             }
             else
@@ -90,16 +83,16 @@
                 echo "<div class='alert alert-info'>No friends added yet.</div>";
             }
             ?>
-            </div>    
+            </div>
 		</div>
 		<div class='row'>
 			<h2>List of Users who subscribe to Friends Finder</h2>
             <div class='col-md-7'>
             <?php
             function usersTable($users)
-            {       
+            {
                 $html = "<table class='table table-bordered'><thead><tr>";
-                $titles = array_keys(end($users));
+                $titles = array('name','email','is_friend');
                 foreach($titles as $title)
                 {
                     if(!($title == 'id' || $title == 'is_friend'))
@@ -109,38 +102,29 @@
                 }
                 $html .= "<th>Action</th></tr></thead><tbody><tr>";
                 foreach($users as $user)
-                {                                                                                    
-                    foreach($user as $key => $value)
+                {
+                    $html .= "<td>".$user->name."</td>";
+                    $html .= "<td>".$user->email."</td>";
+                    if($user->is_friend == 0)
                     {
-                        if(!($key == 'id' || $key == 'is_friend' || $_SESSION['id'] == $user['id']))
-                        {
-                        $html .= "<td>".$value."</td>";
-                        }
-                    }                    
-                    if ($_SESSION['id'] == $user['id'])
-                    {
-                        // $html .= "<td>Self</td>";
-                    }
-                    elseif($user['is_friend'] == 0)
-                    {                        
-                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='".$user['id']."'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td>";                                        
+                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='".$user->id."'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td>";
                     }
                     else
-                    {                        
+                    {
                         $html .= "<td>Friends</td>";
                     }
                     $html .= "</tr><tr>";
                 }
-                    
+
                 $html .= "</tbody></table>";
                 echo $html;
-            }    
+            }
             $users = $person->getEverybody();
-            
+
             usersTable($users);
 
             ?>
-            </div>  
+            </div>
 		</div>
         <hr>
 		<footer>Made with love by Thereza, 2013</footer><br>
