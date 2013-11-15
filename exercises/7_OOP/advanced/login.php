@@ -11,7 +11,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Friends Finder</title>
-	<link rel="stylesheet" type="text/css" href="../../dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css">
 	<style type="text/css">
 	#form-group {
 		margin-top: 10px;

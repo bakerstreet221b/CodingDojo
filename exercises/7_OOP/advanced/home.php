@@ -58,13 +58,7 @@
             <?php
             function friendsTable($users)
             {
-                $html = "<table class='table table-bordered'><thead><tr>";
-                $titles = array('name','email');
-                foreach($titles as $title)
-                {
-                    $html .= "<th>".ucwords($title)."</th>";
-                }
-                $html .= "</tr></thead><tbody>";
+                $html = "<table class='table table-bordered'><thead><tr><th>Name</th><th>Email</th></tr></thead><tbody>";
                 foreach($users as $user)
                 {
                     $html .= "<tr><td>".$user->name."</td>";
@@ -91,29 +85,19 @@
             <?php
             function usersTable($users)
             {
-                $html = "<table class='table table-bordered'><thead><tr>";
-                $titles = array('name','email','is_friend');
-                foreach($titles as $title)
-                {
-                    if(!($title == 'id' || $title == 'is_friend'))
-                    {
-                    $html .= "<th>".ucwords($title)."</th>";
-                    }
-                }
-                $html .= "<th>Action</th></tr></thead><tbody><tr>";
+                $html = "<table class='table table-bordered'><thead><tr><th>Name</th><th>Email</th><th>Action</th></tr></thead><tbody>";
                 foreach($users as $user)
                 {
-                    $html .= "<td>".$user->name."</td>";
+                    $html .= "<tr><td>".$user->name."</td>";
                     $html .= "<td>".$user->email."</td>";
                     if($user->is_friend == 0)
                     {
-                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='".$user->id."'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td>";
+                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='".$user->id."'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td></tr>";
                     }
                     else
                     {
-                        $html .= "<td>Friends</td>";
+                        $html .= "<td>Friends</td></tr>";
                     }
-                    $html .= "</tr><tr>";
                 }
 
                 $html .= "</tbody></table>";
