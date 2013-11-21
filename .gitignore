@@ -5,5 +5,7 @@ exercises/2_jQuery_exercises/try.html
 exercises/5_php_exercises/short_exercise.php
 *.zip
 *.txt
+*.png
 .DS_Store
 dist/
+Green_belt_exam/
