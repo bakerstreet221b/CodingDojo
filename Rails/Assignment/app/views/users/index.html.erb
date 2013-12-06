@@ -1,4 +1,9 @@
 <% content_for :title do %>Display all users<% end %>
 
 <h1>Display all users</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+
+<% @users.each do |user| %>
+	<h2>User ID: <%= user.id %></h2>
+	<p>Name: <%= user.first_name + " " + user.last_name %></p>
+	<p>Email: <%= user.email_address %></p>
+<% end %></h2>
