@@ -1,6 +1,6 @@
 <% content_for :title do %>Display all users<% end %>
 
-<h1>Display all users</h1>
+<h1>Display all users <button class="btn btn-default"><a href="/users/new">Add new user</a></button></h1>
 
 <% @users.each do |user| %>
 	<h2>User ID: <%= user.id %></h2>
