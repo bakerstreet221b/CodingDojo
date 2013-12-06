@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield :title %></title>
+  <%= stylesheet_link_tag    "comments", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "comments", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		<%= yield :jquery_codes %>
+  	})
+  </script>
+</head>
+<body>
+	<div class="container">
+
+<%= yield %>
+	</div>
+</body>
+</html>
