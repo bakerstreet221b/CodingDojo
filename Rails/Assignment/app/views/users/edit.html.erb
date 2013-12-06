@@ -1,0 +1,44 @@
+<% content_for :title do %>Edit profile<% end %>
+
+<h1>Edit profile</h1>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+	<div class="col-md-6">
+	<!-- <form action=<%= edit_user_path @user %> method="get"> -->
+		<%= form_tag(@user, :id => 'edit_form', :method => :put) do %>
+		<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+		<div class='form-group'>
+			<input type="text" name="[user][first_name]" placeholder="First Name" class="form-control" value="<%= @user.first_name %>">
+		</div>
+		<div class='form-group'>
+			<input type="text" name="[user][last_name]" placeholder="Last Name" class="form-control" value="<%= @user.last_name %>">
+		</div>
+		<div class='form-group'>
+			<input type="text" name="[user][email_address]" placeholder="Email Address" class="form-control" value="<%= @user.email_address %>">
+		</div>
+		<!-- <div class='form-group'>
+			<input type="password" name="[user][password]" placeholder="Update Password" class="form-control">
+		</div>
+		<div class='form-group'>
+			<input type="password" name="[user][password_confirmation]" placeholder="Update Password Confirmation" class="form-control">
+		</div> -->
+		<div class='form-group'>
+			<input type="submit" value="Update profile" class="btn btn-primary" class="form-control">
+		</div>
+	<!-- </form> -->
+		<% end %>
+	</div>
+</div>
+
+<%= link_to 'Show', user_path(@user) %> |
+<%= link_to 'Index', users_path %>

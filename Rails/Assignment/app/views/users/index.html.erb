@@ -1,9 +1,9 @@
 <% content_for :title do %>Display all users<% end %>
 
-<h1>Display all users <button class="btn btn-default"><a href="/users/new">Add new user</a></button></h1>
+<h1>Display all users <%= link_to 'Add new user', new_user_path , :class=> "btn btn-default" %>
 
 <% @users.each do |user| %>
-	<h2>User ID: <%= user.id %></h2>
+	<h2>User ID: <%= user.id %>	<%= link_to 'Edit', edit_user_path(user) , :class=> "btn btn-default" %> <%= link_to 'Show', user, :class=> "btn btn-default" %></h2>
 	<p>Name: <%= user.first_name + " " + user.last_name %></p>
 	<p>Email: <%= user.email_address %></p>
 <% end %></h2>
