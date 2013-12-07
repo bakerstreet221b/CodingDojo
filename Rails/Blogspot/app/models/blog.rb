@@ -1,6 +1,7 @@
 class Blog < ActiveRecord::Base
 	validates :name, :description, :presence => true
 
-	has_many :posts, :owners
-	has_and_belongs_to_many :users
+	has_many :posts
+	has_many :owners
+	has_many :users, through: :owners
 end
