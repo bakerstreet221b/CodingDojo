@@ -16,7 +16,8 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
 
   	if @user.save
-      redirect_to :action => 'index'
+      redirect_to @user, notice: 'User was successfully created.'
+      # redirect_to :action => 'index'
   	else
       render :new
   	end
