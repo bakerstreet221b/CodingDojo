@@ -1,6 +1,13 @@
 <% content_for :title do %>Display all users<% end %>
 
-<h1>Display all users <%= link_to 'Add new user', new_user_path , :class=> "btn btn-default" %>
+<h1>Display all users
+	<%= link_to 'Sign up', signup_path , :class=> "btn btn-default" %>
+	<% if signed_in? %>
+	<%= link_to 'Sign out', signout_path , method: :delete, :class=> "btn btn-default", data: { confirm: 'Are you sure?' }%>
+	<% else %>
+	<%= link_to 'Sign in', signin_path , :class=> "btn btn-default" %>
+	<% end %>
+	</h1>
 
 <% @users.each do |user| %>
 	<h2>User ID: <%= user.id %>	<%= link_to 'Edit', edit_user_path(user) , :class=> "btn btn-default" %> <%= link_to 'Show', user, :class=> "btn btn-default" %></h2>
