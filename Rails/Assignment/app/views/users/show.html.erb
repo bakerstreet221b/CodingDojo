@@ -1,6 +1,12 @@
 <% content_for :title do %>Show profile<% end %>
 
 <h1>Show profile of User <%= @user.id %></h1>
+<% if notice %>
+    <div class="alert alert-danger">
+    	<p><%= notice %></p>
+	</div>
+<% end %>
+
 
 <p>
   <strong>Name:</strong>
@@ -12,9 +18,40 @@
   <strong>Email address:</strong>
   <%= @user.email_address %>
 </p>
-
-
-
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Destroy', user_path, method: :delete, :class=> "btn", data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Destroy', user_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Index', users_path %>
+
+<% posts = post_to(@user) %>
+
+<% if posts.any? %>
+    <div id="posts">
+      <h3>Comments:</h3>
+
+
+      <% posts.each do |post| %>
+      	<p>
+		  <strong>Name:</strong>
+		  <%= post.name %>
+		</p>
+		<p>
+		  <strong>Description:</strong>
+		  <%= post.description %>
+		</p>
+		<hr>
+      <% end %>
+    </div>
+<% end %>
+
+<% if signed_in? %>
+<%= simple_form_for new_post, :url => posts_path, html: {:class => 'form-horizontal' }, method: :post do |f| %>
+	  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+	  <%= tag(:input, :type => "hidden", :name => "user_id", :value => @user.id) %>
+	  <%= f.hidden_field :name, value: current_user_name %>
+	  <%= f.text_area :description %>
+	  <%= f.hidden_field :user_id, value: @user.id %>
+	  <%= f.submit "Send Comment", :class => "btn btn-primary"  %>
+	<% end %>
+<% end %>
+<br>
+
