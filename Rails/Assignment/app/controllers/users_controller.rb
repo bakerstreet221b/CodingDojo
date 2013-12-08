@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include UsersHelper
+  include SessionsHelper
 
   def index
   	@users = User.all
@@ -31,6 +32,11 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
+    if current_user != @user
+      deny_access_to_user
+    end
+
   end
 
   def update

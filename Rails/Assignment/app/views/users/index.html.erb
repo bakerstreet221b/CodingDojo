@@ -7,10 +7,20 @@
 	<% else %>
 	<%= link_to 'Sign in', signin_path , :class=> "btn btn-default" %>
 	<% end %>
-	</h1>
+</h1>
+
+<% if notice %>
+    <div class="alert alert-danger">
+    	<p><%= notice %></p>
+	</div>
+<% end %>
 
 <% @users.each do |user| %>
-	<h2>User ID: <%= user.id %>	<%= link_to 'Edit', edit_user_path(user) , :class=> "btn btn-default" %> <%= link_to 'Show', user, :class=> "btn btn-default" %></h2>
+	<h2>User ID: <%= user.id %>
+		<% if signed_in? && current_user == user %>
+		<%= link_to 'Edit', edit_user_path(user) , :class=> "btn btn-default" %>
+		<% end %>
+		<%= link_to 'Show', user, :class=> "btn btn-default" %></h2>
 	<p>Name: <%= user.first_name + " " + user.last_name %></p>
 	<p>Email: <%= user.email_address %></p>
 <% end %></h2>

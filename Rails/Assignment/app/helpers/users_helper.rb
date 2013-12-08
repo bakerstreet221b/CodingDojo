@@ -1,7 +1,7 @@
 module UsersHelper
 
-  def id_of_user
-    @user_id = @user.id
+  def deny_access_to_user
+    redirect_to user_path, :notice => "No access to edit this page."
   end
 
   def users
