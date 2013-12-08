@@ -50,7 +50,7 @@
 	  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 	  <%= tag(:input, :type => "hidden", :name => "user_id", :value => @user.id) %>
 	  <%= f.hidden_field :name, value: current_user_name %>
-	  <%= f.text_area :description %>
+	  <%= f.input :description, label: "Write a comment to "+@user.first_name %>
 	  <%= f.hidden_field :user_id, value: @user.id %>
 	  <%= f.submit "Send Comment", :class => "btn btn-primary"  %>
 	<% end %>
