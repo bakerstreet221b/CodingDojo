@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  include SessionsHelper
+  include UsersHelper
 
   # GET /users
   # GET /users.json
@@ -19,6 +21,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if current_user != @user
+      deny_access_to_user
+    end
   end
 
   # POST /users
@@ -69,6 +74,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :first_name, :last_name, :email, :password_digest)
+      params.require(:user).permit(:username, :first_name, :last_name, :email, :password, :password_confirmation)
     end
 end
