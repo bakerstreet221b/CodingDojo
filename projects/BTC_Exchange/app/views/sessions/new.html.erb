@@ -1,0 +1,30 @@
+<h1>Sign In</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+<% if flash[:error] %>
+	<p><%= flash[:error] %></p>
+<% end %>
+
+<% if notice %>
+    <div class="alert alert-danger">
+    	<p><%= notice %></p>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="col-md-6">
+		<%= simple_form_for :session, :url => sessions_path, method: :post do |f| %>
+		<%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+		<div class='form-group'>
+			<%= f.input :email, :class => "form-control" %>
+		</div>
+		<div class='form-group'>
+			<%= f.input :password, :class => "form-control" %>
+		</div>
+		<div class='form-group'>
+			<%= f.submit "Sign in", :class => "btn btn-primary" %>
+		</div>
+		<% end %>
+	</div>
+</div>
+
