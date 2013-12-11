@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seller: 1
+  buyer: 1
+  amount_dollar: 1
+  amount_BTC: 1
+
+two:
+  seller: 1
+  buyer: 1
+  amount_dollar: 1
+  amount_BTC: 1
