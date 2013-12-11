@@ -1,11 +1,13 @@
 BTCExchange::Application.routes.draw do
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
-  get "transactions/index"
-  get "order_sells/index"
+
+    resources :graphs, :only => [:index]
+    resources :order_sells, :only => [:index]
+    resources :transactions, :only => [:index]
     resources :users
     resources :sessions, :only => [:new, :create, :destroy]
+    get "/home", :to => 'graphs#index'
+    get "/trade", :to => 'order_sells#index'
+    get "/history", :to => 'transactions#index'
     get "/signup", :to => 'users#new'
     get "/signin", :to => 'sessions#new'
     delete "/signout", :to => 'sessions#destroy'
