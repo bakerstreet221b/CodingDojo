@@ -36,7 +36,6 @@ class UsersController < ApplicationController
     if current_user != @user
       deny_access_to_user
     end
-
   end
 
   def update

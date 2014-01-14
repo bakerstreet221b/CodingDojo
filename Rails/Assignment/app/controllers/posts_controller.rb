@@ -10,7 +10,10 @@ class PostsController < ApplicationController
   end
 
   def create
-  	@post = Post.new(post_params)
+   #  @user = User.find(post_params[:user_id])
+  	# @post = @user.posts.new(post_params)
+    @post = Post.new(post_params)
+    puts @comment.inspect
 
   	if @post.save
   		redirect_to user_path(post_params[:user_id]), notice: 'Comment was successfully created.'

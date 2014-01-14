@@ -1,0 +1,34 @@
+<h1>Posts#new</h1>
+<p>Find me in app/views/posts/new.html.erb</p>
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+  <div class="col-md-6">
+    <%= simple_form_for @post, html: {:class => 'form-horizontal' }, method: :post do |f| %>
+    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+    <%= tag(:input, :type => "hidden", :name => "user", :value => current_user.id) %>
+      <div class='form-group'>
+        <%= f.text_field :post, :class => "form-control", :placeholder => "Post" %>
+      </div>
+      <div class='form-group'>
+        <%= f.submit 'Create new post' , :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<% end %>
+
