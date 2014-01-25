@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   def index
   	@posts = Post.all
+
+    @post = Post.new
   end
 
   def new
@@ -11,11 +13,12 @@ class PostsController < ApplicationController
 
   def create
   	@post = Post.new(post_params)
+    puts @post.inspect
 
   	respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @post }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+        format.json { render action: 'home', status: :created, location: @posts }
       else
         format.html { render action: 'new' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -28,6 +31,6 @@ class PostsController < ApplicationController
 
   private
   	def post_params
-      params.require(:post).permit(:post, :user)
+      params.require(:post).permit(:post, :user_id)
     end
 end
