@@ -2,7 +2,7 @@ class FriendsController < ApplicationController
   include SessionsHelper
 
   def index
-    @friends = Friend.all.where(:user_id => current_user.id)
+    @friends = Friend.all.where(:friend_id => current_user.id)
 
     @find_friends = User.search(params[:search])
 
