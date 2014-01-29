@@ -27,15 +27,15 @@
               <td>
               <%= simple_form_for @friend, html: {:class => 'form-horizontal' }, method: :post do |f| %>
               <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-              <%= f.hidden_field :user_id, value: @friend_id %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :request, value: "pending" %>
-              <%= f.hidden_field :friend_id, value: current_user.id %>
+              <%= f.hidden_field :friend_id, value: @friend_id %>
                 <div class='form-group'>
                   <%= f.submit 'Send friend request' , :class => "btn btn-primary" %>
                 </div>
               <% end %></td>
-              <% else %>
-              <td><%= @check_friend.request %></td>
+              <% elsif @check_friend.request == "received" %>
+              <td>Friend request sent</td>
               <% end %>
 
             </tr>
@@ -49,12 +49,25 @@
           <% @friends.each do |friend| %>
             <tr>
               <td><%= friend.user.username %></td>
+              <% @bf_id = friend.id %>
               <% if friend.request == "pending" %>
-              <td>Friend request pending</td>
-              <% elsif friend.request == "sent" %>
-              <td>Friendship requested</td>
-              <% end %>
+              <td><%= simple_form_for @friend, url: friend_path(@bf_id), html: {:class => 'form-horizontal' }, method: :patch do |f| %>
+              <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.hidden_field :friend_id, value: friend.user_id %>
+                <div class='form-group'>
+                  <%= f.submit 'Accept friend request' , :class => "btn btn-primary" %>
+                </div>
+              <% end %></td>
               <td><%= link_to 'Show', friend.user %></td>
+              <% elsif friend.request == "received" %>
+              <td>Friendship pending</td>
+              <td><%= link_to 'Show', friend.user %></td>
+              <% elsif friend.request == "accepted" %>
+              <td></td>
+              <td><%= link_to 'Show', friend.user %></td>
+              <% end %>
+
 
             </tr>
           <% end %>

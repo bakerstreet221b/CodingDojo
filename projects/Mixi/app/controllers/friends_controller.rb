@@ -19,14 +19,14 @@ class FriendsController < ApplicationController
   end
 
   def new
-  	@friend = Friend.new
+    @friend = Friend.new
   end
 
   def create
     @friend = Friend.new(friend_params)
     # puts @friend.inspect
 
-    @return_friendship = Friend.new(:user_id => friend_params[:friend_id], :friend_id => friend_params[:user_id], :request => "sent")
+    @return_friendship = Friend.new(:user_id => friend_params[:friend_id], :friend_id => friend_params[:user_id], :request => "received")
 
     respond_to do |format|
       if @friend.save and @return_friendship.save
@@ -39,7 +39,32 @@ class FriendsController < ApplicationController
     end
   end
 
+  def update
+    @friend = Friend.find_by(:user_id => friend_params[:friend_id], :friend_id => friend_params[:user_id])
+
+    @return_friendship = Friend.find_by(:user_id => friend_params[:user_id], :friend_id => friend_params[:friend_id])
+
+
+    # if @update_friendship.update_attributes(friend_params)
+    # redirect_to root_path
+    # end
+
+    respond_to do |format|
+      if @friend.update(request: 'accepted') and @return_friendship.update(request: 'accepted')
+        format.html { redirect_to friends_path, notice: 'Friendship was successfully created.' }
+        format.json { render action: 'index', status: :created, location: @friends }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
+    def set_user
+      @friend = Friend.new
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def friend_params
       params.require(:friend).permit(:user_id, :friend_id, :request, :search)
