@@ -1,62 +1,67 @@
 <div class="row">
-        <div class="col-md-2">
-          <div class="bs-sidebar hidden-print" role="complementary">
-            <ul class="nav bs-sidenav">
-                <li>
-				  <a href="#glyphicons">Messages</a>
-				</li>
-				<li>
-				  <a href="#dropdowns">Friends</a>
-				</li>
-				<li>
-				  <a href="#btn-groups">Groups</a>
-				</li>
-				<li>
-				  <a href="#btn-dropdowns">Photos</a>
-				  <!-- <ul class="nav">
-				    <li><a href="#nav-tabs">Tabs</a></li>
-				    <li><a href="#nav-pills">Pills</a></li>
-				    <li><a href="#nav-justified">Justified nav</a></li>
-				    <li><a href="#nav-disabled-links">Disabled links</a></li>
-				    <li><a href="#nav-dropdowns">Using dropdowns</a></li>
-				  </ul> -->
-				</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-8" role="main">
-        	<div class="row">
-        	<% if signed_in? %>
-        		<%= simple_form_for @post, html: {:class => 'form-horizontal' }, method: :post do |f| %>
-			    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-			    <%= f.hidden_field :user_id, value: @current_user.id %>
-			      <div class='input-group'>
-			        <%= f.text_field :post, :class => "form-control", :placeholder => "Post" %>
-			        <span class="input-group-btn">
-			          <%= f.submit 'Create new post' , :class => "btn btn-primary" %>
-			        </span>
-			      </div>
-			    <% end %>
-			<% end %>
-        	</div>
-        	<table>
-			  <tbody>
-			    <% @posts.each do |post| %>
-			      <tr>
-			        <td><%= post.user.username %></td>
-			        <td><%= post.post %></td>
-			        <td><%= link_to 'Show', post %></td>
-			      </tr>
-			    <% end %>
-			  </tbody>
-			</table>
-
-			<br>
-
-			<%= link_to 'New Post', new_post_path %>
-
-        </div>
-        <div class="col-md-2" role="right"></div>
+  <div class="col-md-2">
+    <div class="bs-sidebar hidden-print" role="complementary">
+      <ul class="nav bs-sidenav">
+        <li>
+          <a href="#glyphicons">Messages</a>
+        </li>
+        <li>
+          <a href="#dropdowns">Friends</a>
+        </li>
+        <li>
+          <a href="#btn-groups">Groups</a>
+        </li>
+        <li>
+          <a href="#btn-dropdowns">Photos</a>
+          <!-- <ul class="nav">
+          <li><a href="#nav-tabs">Tabs</a></li>
+          <li><a href="#nav-pills">Pills</a></li>
+          <li><a href="#nav-justified">Justified nav</a></li>
+          <li><a href="#nav-disabled-links">Disabled links</a></li>
+          <li><a href="#nav-dropdowns">Using dropdowns</a></li>
+          </ul> -->
+        </li>
+      </ul>
     </div>
+  </div>
+  <div class="col-md-8" role="main">
+    <div class="row">
+    <% if signed_in? %>
+      <%= simple_form_for @post, html: {:class => 'form-horizontal' }, method: :post do |f| %>
+      <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+      <%= f.hidden_field :user_id, value: @current_user.id %>
+        <div class='input-group'>
+        <%= f.text_field :post, :class => "form-control", :placeholder => "Post" %>
+        <span class="input-group-btn">
+          <%= f.submit 'Create new post' , :class => "btn btn-primary" %>
+        </span>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+    <table>
+      <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td class="up"><%= link_to post.user.username, user_path(id: post.user.id) %></td>
+          <td><%= simple_format(post.post) %></td>
+          <td class="up"><%= link_to 'Show', post %></td>
+        </tr>
+        <tr>
+          <td><hr></td>
+          <td><hr></td>
+          <td><hr></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Post', new_post_path %>
+
+  </div>
+  <div class="col-md-2" role="right"></div>
+</div>
 
 
