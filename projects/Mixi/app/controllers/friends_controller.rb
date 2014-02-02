@@ -4,7 +4,7 @@ class FriendsController < ApplicationController
 
   def index
     @friends = Friend.all.where(:friend_id => current_user.id)
-    Friend.where(:user_id => [5,4], :friend_id => [5, 4])
+    # Friend.where(:user_id => [5,4], :friend_id => [5, 4])
 
     @find_friends = User.search(params[:search])
 

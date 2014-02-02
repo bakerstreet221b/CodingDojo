@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128055722) do
+ActiveRecord::Schema.define(version: 20140130042942) do
 
   create_table "comments", force: true do |t|
     t.text     "comment"
@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(version: 20140128055722) do
 
   create_table "messages", force: true do |t|
     t.text     "message"
-    t.integer  "recipient_id"
-    t.integer  "user_id_id"
+    t.integer  "friend_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["user_id_id"], name: "index_messages_on_user_id_id"
+  add_index "messages", ["friend_id"], name: "index_messages_on_friend_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
 
   create_table "order_buys", force: true do |t|
     t.integer  "ammount_BTC"
