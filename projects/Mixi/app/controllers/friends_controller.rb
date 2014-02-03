@@ -2,6 +2,7 @@ class FriendsController < ApplicationController
   include SessionsHelper
   include FriendsHelper
 
+
   def index
     @friends = Friend.all.where(:friend_id => current_user.id)
     # Friend.where(:user_id => [5,4], :friend_id => [5, 4])
@@ -60,9 +61,19 @@ class FriendsController < ApplicationController
     end
   end
 
+  def destroy
+    set_friend
+    @friend.destroy
+    respond_to do |format|
+      format.html { redirect_to friends_url }
+      format.json { head :no_content }
+    end
+  end
+
+
   private
-    def set_user
-      @friend = Friend.new
+    def set_friend
+      @friend = Friend.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

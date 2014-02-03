@@ -1,17 +1,18 @@
 class MessagesController < ApplicationController
   include MessagesHelper
   include SessionsHelper
+  include UsersHelper
 
   def index
     messages = Message.arel_table
-    Message.where(messages[:user_id].eq(current_user.id).or(messages[:friend_id].eq(current_user.id)))
+    @messages = Message.where(messages[:user_id].eq(current_user.id).or(messages[:friend_id].eq(current_user.id)))
   end
 
   def new
     @message = Message.new
   end
 
-  def show
+  def create
     @message = Message.new(message_params)
 
     respond_to do |format|
@@ -25,6 +26,9 @@ class MessagesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def delete
   end
 
@@ -36,7 +40,7 @@ class MessagesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def message_params
-    params.require(:message).permit(:message, :user_id, :friend_id)
+    params.require(:message).permit(:message, :user_id, :friend_id, :subject)
   end
 end
 

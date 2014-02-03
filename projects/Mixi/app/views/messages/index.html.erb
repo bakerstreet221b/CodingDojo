@@ -1,15 +1,24 @@
 <div class="row">
-  <h1>Messages</h1>
+
   <div class="col-md-2">
   </div>
   <div class="col-md-8">
+    <h1>Messages</h1>
     <% if signed_in? %>
       <% if @messages != nil %>
-        <%= @messages.each do |m| %>
-          <%= m.user_id %>
-          <%= m.friend_id %>
-          <%= m.message%>
+      <table>
+        <% @messages.each do |m| %>
+        <tr>
+          <% if m.user_id == current_user.id %>
+          <% find_user(m.friend_id) %>
+          <td><%= link_to @find_user.username, user_path(id: @find_user.id) %></td>
+          <% else%>
+          <td><%= link_to m.user.username, user_path(id: m.user_id) %><%=  %></td>
+          <% end %>
+          <td><%= link_to m.subject, message_path(id: m.id) %></td>
+        </tr>
         <% end %>
+        </table>
       <% end %>
     <% end %>
   </div>

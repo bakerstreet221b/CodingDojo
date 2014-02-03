@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140130042942) do
+ActiveRecord::Schema.define(version: 20140203053802) do
 
   create_table "comments", force: true do |t|
     t.text     "comment"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140130042942) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subject"
   end
 
   add_index "messages", ["friend_id"], name: "index_messages_on_friend_id"

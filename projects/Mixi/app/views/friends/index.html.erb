@@ -48,7 +48,7 @@
         <tbody>
           <% @friends.each do |friend| %>
             <tr>
-              <td><%= friend.user.username %></td>
+              <td><%= link_to friend.user.username, user_path(id: friend.user.id) %></td>
               <% @bf_id = friend.id %>
               <% if friend.request == "pending" %>
               <td><%= simple_form_for @friend, url: friend_path(@bf_id), html: {:class => 'form-horizontal' }, method: :patch do |f| %>
@@ -56,16 +56,16 @@
               <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :friend_id, value: friend.user_id %>
                 <div class='form-group'>
-                  <%= f.submit 'Accept friend request' , :class => "btn btn-primary" %>
+                  <%= f.submit 'Accept' , :class => "btn btn-primary" %>
                 </div>
               <% end %></td>
-              <td><%= link_to 'Show', friend.user %></td>
+              <td><button class="btn btn-danger"><%= link_to 'Reject', friend, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
               <% elsif friend.request == "received" %>
               <td>Friendship pending</td>
-              <td><%= link_to 'Show', friend.user %></td>
+              <td></td>
               <% elsif friend.request == "accepted" %>
               <td></td>
-              <td><%= link_to 'Show', friend.user %></td>
+              <td></td>
               <% end %>
             </tr>
           <% end %>
