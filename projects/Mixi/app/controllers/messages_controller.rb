@@ -8,6 +8,9 @@ class MessagesController < ApplicationController
     @messages = Message.where(messages[:user_id].eq(current_user.id).or(messages[:friend_id].eq(current_user.id)))
   end
 
+  def show
+  end
+
   def new
     @message = Message.new
   end
@@ -24,9 +27,6 @@ class MessagesController < ApplicationController
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def show
   end
 
   def delete
