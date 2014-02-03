@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   include MessagesHelper
   include SessionsHelper
   include UsersHelper
+  include RepliesHelper
 
   def index
     messages = Message.arel_table
@@ -9,6 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def show
+    @message = Message.find(params[:id])
   end
 
   def new
