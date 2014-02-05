@@ -1,12 +1,13 @@
 <div class="row">
 
-  <div class="col-md-2">
-  </div>
+  <!-- <div class="col-md-2">
+  </div> -->
   <div class="col-md-8">
+    <div class="col-md-8">
     <h1>Messages</h1>
     <% if signed_in? %>
       <% if @messages != nil %>
-      <table>
+      <table class="table">
         <% @messages.each do |m| %>
         <tr>
           <% if m.user_id == current_user.id %>
@@ -21,6 +22,7 @@
         </table>
       <% end %>
     <% end %>
+    </div>
   </div>
   <div class="col-md-2"></div>
 </div>
