@@ -62,8 +62,10 @@ class FriendsController < ApplicationController
   end
 
   def destroy
-    set_friend
-    @friend.destroy
+    reject_friendship(friend_params[:user_id], friend_params[:friend_id])
+    @reject_friendship.each do |f|
+      f.destroy
+    end
     respond_to do |format|
       format.html { redirect_to friends_url }
       format.json { head :no_content }
