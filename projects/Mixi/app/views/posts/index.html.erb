@@ -3,16 +3,16 @@
     <div class="bs-sidebar hidden-print" role="complementary">
       <ul class="nav bs-sidenav">
         <li>
-          <a href="#glyphicons">Messages</a>
+          <a href="/messages">Messages</a>
         </li>
         <li>
-          <a href="#dropdowns">Friends</a>
+          <a href="/friends">Friends</a>
         </li>
         <li>
-          <a href="#btn-groups">Groups</a>
+          <a href="/groups">Groups</a>
         </li>
         <li>
-          <a href="#btn-dropdowns">Photos</a>
+          <a href="/photos">Photos</a>
           <!-- <ul class="nav">
           <li><a href="#nav-tabs">Tabs</a></li>
           <li><a href="#nav-pills">Pills</a></li>
@@ -31,9 +31,9 @@
       <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
       <%= f.hidden_field :user_id, value: @current_user.id %>
         <div class='input-group'>
-        <%= f.text_field :post, :class => "form-control", :placeholder => "Post" %>
+        <%= f.text_field :post, :class => "form-control", :placeholder => "What's on your mind?" %>
         <span class="input-group-btn">
-          <%= f.submit 'Create new post' , :class => "btn btn-primary" %>
+          <%= f.submit 'Say it' , :class => "btn btn-primary" %>
         </span>
         </div>
       <% end %>
