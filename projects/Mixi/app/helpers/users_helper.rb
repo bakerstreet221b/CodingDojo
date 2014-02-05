@@ -5,8 +5,6 @@ module UsersHelper
   end
 
   def find_user(user_id)
-  	@find_user = User.find(user_id)
+    @find_user = User.find(user_id)
   end
-
-
 end

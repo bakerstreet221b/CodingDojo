@@ -16,7 +16,7 @@ module SessionsHelper
   end
 
   def current_user_name
-  	@current_user.first_name + " " + @current_user.last_name
+    @current_user.first_name + " " + @current_user.last_name
   end
 
   def signed_in?
@@ -35,7 +35,4 @@ module SessionsHelper
   def deny_access
     redirect_to signin_path, :notice => "Please sign in to access this page."
   end
-
 end
-
-

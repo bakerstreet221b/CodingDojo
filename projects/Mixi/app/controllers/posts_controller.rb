@@ -7,6 +7,9 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def show
+  end
+
   def new
   	@post = Post.new
   end
@@ -24,9 +27,6 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def show
   end
 
   private

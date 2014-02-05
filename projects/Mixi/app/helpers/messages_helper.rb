@@ -6,6 +6,6 @@ module MessagesHelper
   end
 
   def new_message
-  	@message = Message.new
+    @message = Message.new
   end
 end
