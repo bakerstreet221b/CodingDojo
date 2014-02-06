@@ -49,7 +49,68 @@
         <% @posts.each do |post| %>
           <tr>
             <td class="up"><%= link_to post.user.username, user_path(id: post.user.id) %></td>
-            <td><%= simple_format(post.post) %></td>
+            <td><%= simple_format(post.post) %>
+              <% display_last_two(post.id) %>
+              <% if @display_last_two.any? %>
+                <table class="table">
+                  <tbody>
+                    <% post_id = post.id %>
+                    <% @display_last_two.each do |d| %>
+                      <tr>
+                        <td class="up"><%= link_to d.user.username, user_path(id: d.user.id) %></td>
+                        <td><%= simple_format(d.comment) %></td>
+                      </tr>
+                    <% end -%>
+                    <tr>
+                      <td></td>
+                      <td>
+                        <% if signed_in? %>
+                          <% new_comment %>
+                          <%= simple_form_for @comment, html: {:class => 'form-horizontal' }, method: :post do |f| %>
+                            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+                            <%= f.hidden_field :user_id, value: @current_user.id %>
+                            <%= f.hidden_field :post_id, value: post_id %>
+                            <div class='input-group'>
+                              <%= f.text_field :comment, :class => "form-control", :placeholder => "What's your reply?" %>
+                              <span class="input-group-btn">
+                                <%= f.submit 'Say it' , :class => "btn btn-primary" %>
+                              </span>
+                            </div>
+                          <% end %>
+                        <% else%>
+                        <p>Login or register to comment</p>
+                        <% end %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              <% else %>
+                <!-- <table>
+                  <tbody>
+                    <tr>
+                      <td> -->
+                        <% if signed_in? %>
+                          <% new_comment %>
+                          <%= simple_form_for @comment, html: {:class => 'form-horizontal' }, method: :post do |f| %>
+                            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+                            <%= f.hidden_field :user_id, value: @current_user.id %>
+                            <%= f.hidden_field :post_id, value: post_id %>
+                            <div class='input-group'>
+                              <%= f.text_field :comment, :class => "form-control", :placeholder => "What's your reply?" %>
+                              <span class="input-group-btn">
+                                <%= f.submit 'Say it' , :class => "btn btn-primary" %>
+                              </span>
+                            </div>
+                          <% end %>
+                        <% else%>
+                        <p>Login or register to comment</p>
+                        <% end %>
+                      <!-- </td>
+                    </tr>
+                  </tbody>
+                </table> -->
+              <% end -%>
+            </td>
             <td class="up"><%= link_to 'Show', post %></td>
           </tr>
         <% end %>
