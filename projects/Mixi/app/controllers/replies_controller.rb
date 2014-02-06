@@ -20,7 +20,7 @@ class RepliesController < ApplicationController
       if @reply.save
         @message_id = reply_params[:message_id]
         format.html { redirect_to message_path(id: @message_id), notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @reply }
+        format.json { render action: 'show', status: :created, location: message_path(id: @message_id) }
       else
         format.html { render action: 'new' }
         format.json { render json: @reply.errors, status: :unprocessable_entity }
