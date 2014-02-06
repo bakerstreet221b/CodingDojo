@@ -3,6 +3,7 @@ BTCExchange::Application.routes.draw do
     resources :friends
     resources :replies
     resources :messages
+    resources :comments
     resources :posts
     resources :users
     resources :sessions, :only => [:new, :create, :destroy]

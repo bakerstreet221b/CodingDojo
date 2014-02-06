@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	include SessionsHelper
+  include CommentsHelper
 
   def index
   	@posts = Post.all
@@ -8,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -30,6 +32,10 @@ class PostsController < ApplicationController
   end
 
   private
+    def set_post
+      @post = Post.find(params[:id])
+    end
+
   	def post_params
       params.require(:post).permit(:post, :user_id)
     end
