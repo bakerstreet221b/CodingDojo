@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   include SessionsHelper
   include UsersHelper
   include MessagesHelper
+  include PhotosHelper
 
   # GET /users
   # GET /users.json
