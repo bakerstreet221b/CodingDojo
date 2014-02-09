@@ -1,29 +1,33 @@
-<h1>Sign In</h1>
+  <div class="col-md-8">
+    <h1>Sign In</h1>
 
-<% if flash[:error] %>
-  <p><%= flash[:error] %></p>
-<% end %>
-
-<% if notice %>
-  <div class="alert alert-danger">
-    <p><%= notice %></p>
-  </div>
-<% end %>
-
-<div class="row">
-  <div class="col-md-6">
-    <%= simple_form_for :session, :url => sessions_path, method: :post do |f| %>
-    <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-    <div class='form-group'>
-      <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
-    </div>
-    <div class='form-group'>
-      <%= f.text_field :password, :class => "form-control", :placeholder => "Password" %>
-    </div>
-    <div class='form-group'>
-      <%= f.submit "Sign in", :class => "btn btn-primary" %>
-    </div>
+    <% if flash[:error] %>
+      <p><%= flash[:error] %></p>
     <% end %>
+
+    <% if notice %>
+      <div class="alert alert-danger">
+        <p><%= notice %></p>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= simple_form_for :session, :url => sessions_path, method: :post do |f| %>
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <div class='form-group'>
+          <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+        </div>
+        <div class='form-group'>
+          <%= f.text_field :password, :class => "form-control", :placeholder => "Password" %>
+        </div>
+        <div class='form-group'>
+          <%= f.submit "Sign in", :class => "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+  <div class="col-md-2"></div>
 </div>
 

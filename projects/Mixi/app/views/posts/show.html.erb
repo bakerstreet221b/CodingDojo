@@ -1,4 +1,4 @@
-<div class="row">
+
   <div class="col-md-8">
     <h1>Post by <%= link_to @post.user.username, user_path(id: @post.user.id) %></h1>
     <p><%= @post.post %></p>
@@ -32,4 +32,5 @@
       <% end %>
     </div>
   </div>
+  <div class="col-md-2"></div>
 </div>

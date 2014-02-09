@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag :defaults %>
 </head>
 <body>
   <nav class="navbar navbar-default" role="navigation">
@@ -59,6 +60,34 @@
     </div>
   </nav>
   <div class="container" id="main_container">
+    <div class="row">
+      <div class="col-md-2">
+          <% if signed_in? %>
+          <div class="bs-sidebar hidden-print" role="complementary">
+            <ul class="nav bs-sidenav">
+              <li>
+                <a href="/messages">Messages</a>
+              </li>
+              <li>
+                <a href="/friends">Friends</a>
+              </li>
+              <li>
+                <a href="/groups">Groups</a>
+              </li>
+              <li>
+                <a href="/photos">Photos</a>
+                <!-- <ul class="nav">
+                <li><a href="#nav-tabs">Tabs</a></li>
+                <li><a href="#nav-pills">Pills</a></li>
+                <li><a href="#nav-justified">Justified nav</a></li>
+                <li><a href="#nav-disabled-links">Disabled links</a></li>
+                <li><a href="#nav-dropdowns">Using dropdowns</a></li>
+                </ul> -->
+              </li>
+            </ul>
+          </div>
+        <% end -%>
+      </div>
 
     <%= yield %>
 

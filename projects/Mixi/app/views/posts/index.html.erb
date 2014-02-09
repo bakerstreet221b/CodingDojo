@@ -1,31 +1,3 @@
-<div class="row">
-  <div class="col-md-2">
-      <% if signed_in? %>
-      <div class="bs-sidebar hidden-print" role="complementary">
-        <ul class="nav bs-sidenav">
-          <li>
-            <a href="/messages">Messages</a>
-          </li>
-          <li>
-            <a href="/friends">Friends</a>
-          </li>
-          <li>
-            <a href="/groups">Groups</a>
-          </li>
-          <li>
-            <a href="/photos">Photos</a>
-            <!-- <ul class="nav">
-            <li><a href="#nav-tabs">Tabs</a></li>
-            <li><a href="#nav-pills">Pills</a></li>
-            <li><a href="#nav-justified">Justified nav</a></li>
-            <li><a href="#nav-disabled-links">Disabled links</a></li>
-            <li><a href="#nav-dropdowns">Using dropdowns</a></li>
-            </ul> -->
-          </li>
-        </ul>
-      </div>
-    <% end -%>
-  </div>
   <div class="col-md-8" role="main">
     <h3>News feed</h3>
     <div class="row">
@@ -61,12 +33,12 @@
                         <td><%= simple_format(d.comment) %></td>
                       </tr>
                     <% end -%>
-                    <tr>
+                    <tr class="comments_table">
                       <td></td>
                       <td>
                         <% if signed_in? %>
                           <% new_comment %>
-                          <%= simple_form_for @comment, html: {:class => 'form-horizontal' }, method: :post do |f| %>
+                          <%= simple_form_for @comment, html: {:class => 'form-horizontal comment' }, method: :post do |f| %>
                             <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
                             <%= f.hidden_field :user_id, value: @current_user.id %>
                             <%= f.hidden_field :post_id, value: post_id %>
@@ -91,10 +63,10 @@
                       <td> -->
                         <% if signed_in? %>
                           <% new_comment %>
-                          <%= simple_form_for @comment, html: {:class => 'form-horizontal' }, method: :post do |f| %>
+                          <%= simple_form_for @comment, html: {:class => 'form-horizontal comment' }, method: :post do |f| %>
                             <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
                             <%= f.hidden_field :user_id, value: @current_user.id %>
-                            <%= f.hidden_field :post_id, value: post_id %>
+                            <%= f.hidden_field :post_id, value: post.id %>
                             <div class='input-group'>
                               <%= f.text_field :comment, :class => "form-control", :placeholder => "What's your reply?" %>
                               <span class="input-group-btn">
@@ -123,5 +95,3 @@
   </div>
   <div class="col-md-2" role="right"></div>
 </div>
-
-
