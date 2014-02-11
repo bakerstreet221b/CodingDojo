@@ -66,14 +66,17 @@
           <div class="bs-sidebar hidden-print" role="complementary">
             <ul class="nav bs-sidenav">
               <li>
+                <a href="/users/<%= current_user.id %>" >Profile</a>
+              </li>
+              <li>
                 <a href="/messages">Messages</a>
               </li>
               <li>
                 <a href="/friends">Friends</a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="/groups">Groups</a>
-              </li>
+              </li> -->
               <li>
                 <a href="/photos">Photos</a>
                 <!-- <ul class="nav">
