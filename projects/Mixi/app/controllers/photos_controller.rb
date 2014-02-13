@@ -1,10 +1,11 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
   include SessionsHelper
+  include PhotosHelper
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    @photos = Photo.where(user_id: current_user.id)
   end
 
   # GET /photos/1

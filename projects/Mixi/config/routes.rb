@@ -9,6 +9,7 @@ BTCExchange::Application.routes.draw do
     resources :users
     resources :sessions, :only => [:new, :create, :destroy]
     get "/home", :to => 'posts#index'
+    get "/friend_pictures", :to => 'photos#friend_pictures'
     # get "/history", :to => 'transactions#index'
     get "/signup", :to => 'users#new'
     get "/signin", :to => 'sessions#new'

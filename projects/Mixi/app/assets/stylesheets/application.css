@@ -19,3 +19,19 @@
 .black {
 	border-top: 1px solid black;
 }
+.focus_expand {
+	height: 34px;
+	margin-right: 5px;
+}
+.focus_expand:focus {
+	height: 150px;
+}
+textarea.my_text_field {
+    height: 150px !important;
+}
+.my_text_field {
+	width: 450px;
+}
+#align_right {
+	float: right;
+}
