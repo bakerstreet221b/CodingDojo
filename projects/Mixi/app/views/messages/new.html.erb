@@ -11,29 +11,30 @@
           <td><%= @find_user.username  %></td>
         </tr>
         <tr>
-          <td>Subject: </td>
+          <td class="up">Subject: </td>
           <%= simple_form_for @message, html: {:class => 'form-horizontal' }, method: :post do |f| %>
             <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.hidden_field :friend_id, value: @find_user.id %>
-            <td>
+            <td class="my_text_field">
               <div class='form-group'>
                 <%= f.text_field :subject, :class => "form-control" %>
               </div>
             </td>
           </tr>
           <tr>
-            <td>Message: </td>
-            <td>
+            <td class="up">Message: </td>
+            <td class="my_text_field">
               <div class='form-group'>
-                <%= f.text_field :message, :class => "form-control" %>
+                <%= f.text_area :message, :class => "form-control my_text_field" %>
               </div>
             </td>
           </tr>
           <tr>
+            <td></td>
             <td>
               <div class='form-group'>
-                <%= f.submit 'Say it' , :class => "btn btn-primary" %>
+                <%= f.submit 'Say it' , :class => "btn btn-primary", :id => "align_right" %>
               </div>
             </td>
           </tr>
