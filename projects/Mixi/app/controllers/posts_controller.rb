@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   	respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to @posts, notice: 'Post was successfully created.' }
         format.json { render action: 'home', status: :created, location: @posts }
       else
         format.html { render action: 'new' }

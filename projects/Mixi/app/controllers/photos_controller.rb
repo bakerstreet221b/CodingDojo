@@ -43,6 +43,8 @@ class PhotosController < ApplicationController
   def update
     respond_to do |format|
       if @photo.update(photo_params)
+        puts photo_params.inspect
+        puts @photo.inspect
         format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
         format.json { head :no_content }
       else
@@ -70,6 +72,6 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:user_id, :name, :description, :picture)
+      params.require(:photo).permit(:user_id, :name, :description, :picture, :avatar)
     end
 end

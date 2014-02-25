@@ -19,8 +19,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @post_id = comment_params[:post_id]
-        format.html { redirect_to post_path(id: @post_id), notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: post_path(id: @post_id) }
+        format.html { redirect_to posts_path, notice: 'User was successfully created.' }
+        format.json { render action: 'show', status: :created, location: posts_path }
       else
         format.html { render action: 'new' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }

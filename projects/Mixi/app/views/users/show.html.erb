@@ -2,11 +2,13 @@
   <div class="col-md-10">
     <div class="col-md-9">
       <div>
-        <% if avatar(@user_id).any?%>
-        <%= image_tag(@avatar.picture_url, :width => 200) %>
-        <% else%>
-        <% default_avatar %>
-        <%= image_tag(@default_avatar.picture_url, :width => 200) %>
+        <% if avatar(@user.id).any?%>
+          <% @avatar.each do |avatar| %>
+          <%= image_tag(avatar.picture_url, :width => 200) %>
+          <% end -%>
+        <% else %>
+          <% default_avatar %>
+          <%= image_tag(@default_avatar.picture_url, :width => 200) %>
         <% end -%>
       </div>
       <h3>
@@ -47,10 +49,12 @@
         <strong>Photos:</strong>
       </p>
       <% @last_20_pics.each do |photo| %>
-        <div class="photo">
-          <div><%= link_to image_tag(photo.picture_url, :width => 150), photo_path(id: photo.id) %></div>
-          <p><%= photo.name %></p>
-        </div>
+        <% if photo.avatar != "1" %>
+          <div class="photo">
+            <div><%= link_to image_tag(photo.picture_url, :width => 150), photo_path(id: photo.id) %></div>
+            <p><%= photo.name %></p>
+          </div>
+        <% end -%>
       <% end %>
     <% end -%>
     </div>

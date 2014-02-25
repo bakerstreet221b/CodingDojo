@@ -5,8 +5,8 @@
 		<div class="col-md-10">
       <%= form_tag friends_path, :method => 'get' do %>
         <p>
-          <%= text_field_tag :search, params[:search] %>
-          <%= submit_tag "Search", :name => nil %>
+          <%= text_field_tag :search, params[:search], :class => "form-control", :id  => "form_control", :placeholder => "Search for friends" %>
+          <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
         </p>
       <% end %>
 	  </div>

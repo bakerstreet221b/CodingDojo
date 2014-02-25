@@ -23,9 +23,9 @@
 	height: 34px;
 	margin-right: 5px;
 }
-.focus_expand:focus {
+/*.focus_expand:focus {
 	height: 150px;
-}
+}*/
 textarea.my_text_field {
     height: 150px !important;
 }
@@ -34,4 +34,14 @@ textarea.my_text_field {
 }
 #align_right {
 	float: right;
+}
+#main_container {
+	margin-top: 60px;
+}
+#form_control {
+	width: 80%;
+	display: inline-block;
+}
+.pic_sm {
+	width: 250px;
 }
