@@ -21,7 +21,6 @@
 }
 .focus_expand {
 	height: 34px;
-	margin-right: 5px;
 }
 /*.focus_expand:focus {
 	height: 150px;
@@ -34,6 +33,7 @@ textarea.my_text_field {
 }
 #align_right {
 	float: right;
+	margin-left: 5px;
 }
 #main_container {
 	margin-top: 60px;
@@ -45,3 +45,40 @@ textarea.my_text_field {
 .pic_sm {
 	width: 250px;
 }
+#my_nav {
+	/*background-image: #d6d322;*/
+	background-color: #d6d322;
+}
+#my_nav a:hover {
+	color: #f409ba;
+}
+
+#my_nav {
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#eef015), to(#d6d322));
+  background-image: -webkit-linear-gradient(top, #eef015, 0%, #d6d322, 100%);
+  background-image: -moz-linear-gradient(top, #d6d322 0%, #d6d322 100%);
+  background-image: linear-gradient(to bottom, #eef015 0%, #d6d322 100%);
+  background-repeat: repeat-x;
+  border-color: #D6D6D6;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eef015', endColorstr='#d6d322', GradientType=0);
+}
+#my_sidebar {
+	position: fixed;
+	width: 12%;
+	border-radius: 10px;
+	padding-top: 10px;
+	padding-bottom: 13px;
+	margin-top: 25px;
+}
+.photo {
+	margin-right: 5px;
+}
+.pic_sm {
+	height: 150px;
+	width: 150px;
+}
+.pic_sm img{
+	height: 100%;
+	width: 100%;
+}
+

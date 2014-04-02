@@ -1,46 +1,44 @@
-  <div class="col-md-8">
-    <% if signed_in? %>
-      <% find_user(params["format"])%>
-      <h2>What say you to <%= @find_user.username %>?</h2>
-      <p><%= link_to "Return to "+@find_user.username+"'s profile", user_path(id: @find_user.id) %></p>
-      <br>
-      <br>
-      <table>
-        <tr>
-          <td>To: </td>
-          <td><%= @find_user.username  %></td>
+  <% if signed_in? %>
+    <% find_user(params["format"])%>
+    <h2>What say you to <%= @find_user.username %>?</h2>
+    <p><%= link_to "Return to "+@find_user.username+"'s profile", user_path(id: @find_user.id) %></p>
+    <br>
+    <br>
+    <table>
+      <tr>
+        <td>To: </td>
+        <td><%= @find_user.username  %></td>
+      </tr>
+      <tr>
+        <td class="up">Subject: </td>
+        <%= simple_form_for @message, html: {:class => 'form-horizontal' }, method: :post do |f| %>
+          <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :friend_id, value: @find_user.id %>
+          <td class="my_text_field">
+            <div class='form-group'>
+              <%= f.text_field :subject, :class => "form-control" %>
+            </div>
+          </td>
         </tr>
         <tr>
-          <td class="up">Subject: </td>
-          <%= simple_form_for @message, html: {:class => 'form-horizontal' }, method: :post do |f| %>
-            <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.hidden_field :friend_id, value: @find_user.id %>
-            <td class="my_text_field">
-              <div class='form-group'>
-                <%= f.text_field :subject, :class => "form-control" %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td class="up">Message: </td>
-            <td class="my_text_field">
-              <div class='form-group'>
-                <%= f.text_area :message, :class => "form-control my_text_field" %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class='form-group'>
-                <%= f.submit 'Say it' , :class => "btn btn-primary", :id => "align_right" %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    <% end -%>
-  </div>
-  <div class="col-md-2"></div>
-</div>
+          <td class="up">Message: </td>
+          <td class="my_text_field">
+            <div class='form-group'>
+              <%= f.text_area :message, :class => "form-control my_text_field" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <div class='form-group'>
+              <%= f.submit 'Say it' , :class => "btn btn-primary", :id => "align_right" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end -%>
+
+

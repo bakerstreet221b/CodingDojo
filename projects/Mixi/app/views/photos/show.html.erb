@@ -1,29 +1,23 @@
-<div class="col-md-8">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @photo.user.username %>
-</p>
+<% if @photo.avatar != "1"%>
+	<h2>
+		<%= @photo.name %><small> by <%= @photo.user.username %></small>
+		<%= link_to 'Back', photos_path, :class => "btn btn-default", :id => "align_right" %>
+		<%= link_to 'Edit', edit_photo_path(@photo), :class => "btn btn-default", :id => "align_right" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @photo.name %>
-</p>
-
+	</h2>
+<% else %>
+	<h2>
+		Avatar of <%= @photo.user.username %><%= link_to 'Edit', edit_photo_path(@photo), :class => "btn btn-default", :id => "align_right" %><%= link_to 'Back', photos_path, :class => "btn btn-default", :id => "align_right" %>
+	</h2>
+<% end -%>
+<br>
 <p>
   <strong>Description:</strong>
   <%= @photo.description %>
 </p>
-
+<br>
 <p>
-  <strong>Picture:</strong>
   <%= image_tag(@photo.picture_url, :width => 600) if @photo.picture.present? %>
 </p>
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
-
-</div>
-  <div class="col-md-2"></div>
-</div>

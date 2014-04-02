@@ -1,7 +1,7 @@
-  <p id="notice"><%= notice %></p>
-  <div class="col-md-10">
-    <div class="col-md-9">
-      <div>
+<p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-8">
+      <div id="avatar">
         <% if avatar(@user.id).any?%>
           <% @avatar.each do |avatar| %>
           <%= image_tag(avatar.picture_url, :width => 200) %>
@@ -24,7 +24,7 @@
         <%= @user.email %>
       </p>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <% if @user.id != current_user.id %>
         <button class="btn btn-primary"><%= link_to 'Message', new_message_path(@user) %></button>
         <br>
@@ -38,11 +38,9 @@
       <% end %>
     </div>
   </div>
-</div>
+
 <div class="row">
-  <div class="col-md-2"></div>
   <div class="col-md-10">
-    <div class="col-md-10">
     <% last_20_pics(@user.id) %>
       <% if  @last_20_pics.any? %>
       <p>
@@ -51,20 +49,16 @@
       <% @last_20_pics.each do |photo| %>
         <% if photo.avatar != "1" %>
           <div class="photo">
-            <div><%= link_to image_tag(photo.picture_url, :width => 150), photo_path(id: photo.id) %></div>
+            <div class="pic_sm"><%= link_to image_tag(photo.picture_url, :width => 150), photo_path(id: photo.id) %></div>
             <p><%= photo.name %></p>
           </div>
         <% end -%>
       <% end %>
     <% end -%>
-    </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-10">
-    <button class="btn"><%= link_to 'Delete account', current_user, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-  </div>
-</div>
+<!-- <div class="row"> -->
+  <button class="btn"><%= link_to 'Delete account', current_user, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+<!-- </div> -->
 
 
