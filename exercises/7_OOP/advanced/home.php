@@ -26,6 +26,9 @@
         .container {
             width: 960px;
         }
+        h2 {
+            padding-left: 15px;
+        }
     </style>
 	<script type="text/javascript">
 
@@ -92,7 +95,7 @@
                     $html .= "<td>".$user->email."</td>";
                     if($user->is_friend == 0)
                     {
-                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='".$user->id."'><input type='submit' value='Add as Friend' class='btn btn-success'></form></td></tr>";
+                        $html .= "<td><form action='home.php' method='post'><input type='hidden' name='action' value='".$user->id."'><input type='submit' value='Add as Friend' class='btn btn-success btn-sm'></form></td></tr>";
                     }
                     else
                     {
